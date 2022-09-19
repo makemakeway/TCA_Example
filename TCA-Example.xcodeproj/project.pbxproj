@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		103039EF28D8372C009BC9E1 /* LogInAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 103039EA28D8372C009BC9E1 /* LogInAction.swift */; };
+		103039F028D8372C009BC9E1 /* LogInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 103039EB28D8372C009BC9E1 /* LogInView.swift */; };
+		103039F128D8372C009BC9E1 /* LogInEnvironment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 103039EC28D8372C009BC9E1 /* LogInEnvironment.swift */; };
+		103039F228D8372C009BC9E1 /* LogInReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 103039ED28D8372C009BC9E1 /* LogInReducer.swift */; };
+		103039F328D8372C009BC9E1 /* LogInState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 103039EE28D8372C009BC9E1 /* LogInState.swift */; };
+		103039F628D839FF009BC9E1 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 103039F528D839FF009BC9E1 /* Alamofire */; };
 		1052833C28C0DA81001CA6A4 /* TCA_ExampleApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1052833B28C0DA81001CA6A4 /* TCA_ExampleApp.swift */; };
 		1052833E28C0DA81001CA6A4 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1052833D28C0DA81001CA6A4 /* ContentView.swift */; };
 		1052834028C0DA81001CA6A4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1052833F28C0DA81001CA6A4 /* Assets.xcassets */; };
@@ -37,6 +43,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		103039EA28D8372C009BC9E1 /* LogInAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInAction.swift; sourceTree = "<group>"; };
+		103039EB28D8372C009BC9E1 /* LogInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInView.swift; sourceTree = "<group>"; };
+		103039EC28D8372C009BC9E1 /* LogInEnvironment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInEnvironment.swift; sourceTree = "<group>"; };
+		103039ED28D8372C009BC9E1 /* LogInReducer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInReducer.swift; sourceTree = "<group>"; };
+		103039EE28D8372C009BC9E1 /* LogInState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInState.swift; sourceTree = "<group>"; };
 		1052833828C0DA81001CA6A4 /* TCA-Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "TCA-Example.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		1052833B28C0DA81001CA6A4 /* TCA_ExampleApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TCA_ExampleApp.swift; sourceTree = "<group>"; };
 		1052833D28C0DA81001CA6A4 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -55,6 +66,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1052836C28C0DB86001CA6A4 /* RealmSwift in Frameworks */,
+				103039F628D839FF009BC9E1 /* Alamofire in Frameworks */,
 				1052836A28C0DB86001CA6A4 /* Realm in Frameworks */,
 				1052836728C0DAB1001CA6A4 /* ComposableArchitecture in Frameworks */,
 			);
@@ -77,6 +89,18 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		103039E928D83714009BC9E1 /* LogIn */ = {
+			isa = PBXGroup;
+			children = (
+				103039EA28D8372C009BC9E1 /* LogInAction.swift */,
+				103039EB28D8372C009BC9E1 /* LogInView.swift */,
+				103039EC28D8372C009BC9E1 /* LogInEnvironment.swift */,
+				103039ED28D8372C009BC9E1 /* LogInReducer.swift */,
+				103039EE28D8372C009BC9E1 /* LogInState.swift */,
+			);
+			path = LogIn;
+			sourceTree = "<group>";
+		};
 		1052832F28C0DA81001CA6A4 = {
 			isa = PBXGroup;
 			children = (
@@ -100,6 +124,7 @@
 		1052833A28C0DA81001CA6A4 /* TCA-Example */ = {
 			isa = PBXGroup;
 			children = (
+				103039E928D83714009BC9E1 /* LogIn */,
 				1052833B28C0DA81001CA6A4 /* TCA_ExampleApp.swift */,
 				1052833D28C0DA81001CA6A4 /* ContentView.swift */,
 				1052833F28C0DA81001CA6A4 /* Assets.xcassets */,
@@ -153,6 +178,7 @@
 				1052836628C0DAB1001CA6A4 /* ComposableArchitecture */,
 				1052836928C0DB86001CA6A4 /* Realm */,
 				1052836B28C0DB86001CA6A4 /* RealmSwift */,
+				103039F528D839FF009BC9E1 /* Alamofire */,
 			);
 			productName = "TCA-Example";
 			productReference = 1052833828C0DA81001CA6A4 /* TCA-Example.app */;
@@ -229,6 +255,7 @@
 			packageReferences = (
 				1052836528C0DAB1001CA6A4 /* XCRemoteSwiftPackageReference "swift-composable-architecture" */,
 				1052836828C0DB86001CA6A4 /* XCRemoteSwiftPackageReference "realm-swift" */,
+				103039F428D839FF009BC9E1 /* XCRemoteSwiftPackageReference "Alamofire" */,
 			);
 			productRefGroup = 1052833928C0DA81001CA6A4 /* Products */;
 			projectDirPath = "";
@@ -272,7 +299,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				103039F228D8372C009BC9E1 /* LogInReducer.swift in Sources */,
+				103039EF28D8372C009BC9E1 /* LogInAction.swift in Sources */,
 				1052833E28C0DA81001CA6A4 /* ContentView.swift in Sources */,
+				103039F328D8372C009BC9E1 /* LogInState.swift in Sources */,
+				103039F128D8372C009BC9E1 /* LogInEnvironment.swift in Sources */,
+				103039F028D8372C009BC9E1 /* LogInView.swift in Sources */,
 				1052833C28C0DA81001CA6A4 /* TCA_ExampleApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -360,7 +392,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -414,7 +446,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -600,6 +632,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		103039F428D839FF009BC9E1 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Alamofire/Alamofire.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
 		1052836528C0DAB1001CA6A4 /* XCRemoteSwiftPackageReference "swift-composable-architecture" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/pointfreeco/swift-composable-architecture";
@@ -619,6 +659,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		103039F528D839FF009BC9E1 /* Alamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 103039F428D839FF009BC9E1 /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = Alamofire;
+		};
 		1052836628C0DAB1001CA6A4 /* ComposableArchitecture */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 1052836528C0DAB1001CA6A4 /* XCRemoteSwiftPackageReference "swift-composable-architecture" */;

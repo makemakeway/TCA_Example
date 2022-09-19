@@ -8,8 +8,30 @@
 import SwiftUI
 
 struct ContentView: View {
-    var body: some View {
-        Text("Hello, world!")
-            .padding()
+
+  
+  @State var hiddened: Bool = false
+  var body: some View {
+    Group {
+      NavigationView {
+        LogInView(store: .init(
+          initialState: .init(),
+          reducer: LogInReducer(),
+          environment: .init()
+        ))
+      }
     }
+  }
+}
+
+extension View {
+  @ViewBuilder func isHidden(_ hidden: Bool, remove: Bool = false) -> some View {
+    if hidden {
+      if !remove {
+        self.hidden()
+      }
+    } else {
+      self
+    }
+  }
 }
