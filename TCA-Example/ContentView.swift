@@ -8,17 +8,17 @@
 import SwiftUI
 
 struct ContentView: View {
-
-  
   @State var hiddened: Bool = false
   var body: some View {
     Group {
       NavigationView {
-        LogInView(store: .init(
-          initialState: .init(),
-          reducer: LogInReducer(),
-          environment: .init()
-        ))
+        HomeView(
+          store: .init(
+            initialState: .init(),
+            reducer: HomeReducer(),
+            environment: HomeEnvironment()
+          )
+        )
       }
     }
   }

@@ -7,12 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		103039EF28D8372C009BC9E1 /* LogInAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 103039EA28D8372C009BC9E1 /* LogInAction.swift */; };
-		103039F028D8372C009BC9E1 /* LogInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 103039EB28D8372C009BC9E1 /* LogInView.swift */; };
-		103039F128D8372C009BC9E1 /* LogInEnvironment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 103039EC28D8372C009BC9E1 /* LogInEnvironment.swift */; };
-		103039F228D8372C009BC9E1 /* LogInReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 103039ED28D8372C009BC9E1 /* LogInReducer.swift */; };
-		103039F328D8372C009BC9E1 /* LogInState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 103039EE28D8372C009BC9E1 /* LogInState.swift */; };
-		103039F628D839FF009BC9E1 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 103039F528D839FF009BC9E1 /* Alamofire */; };
+		10303A0728D8578A009BC9E1 /* HomeAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10303A0228D8578A009BC9E1 /* HomeAction.swift */; };
+		10303A0828D8578A009BC9E1 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10303A0328D8578A009BC9E1 /* HomeView.swift */; };
+		10303A0928D8578A009BC9E1 /* HomeEnvironment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10303A0428D8578A009BC9E1 /* HomeEnvironment.swift */; };
+		10303A0A28D8578A009BC9E1 /* HomeReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10303A0528D8578A009BC9E1 /* HomeReducer.swift */; };
+		10303A0B28D8578A009BC9E1 /* HomeState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10303A0628D8578A009BC9E1 /* HomeState.swift */; };
 		1052833C28C0DA81001CA6A4 /* TCA_ExampleApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1052833B28C0DA81001CA6A4 /* TCA_ExampleApp.swift */; };
 		1052833E28C0DA81001CA6A4 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1052833D28C0DA81001CA6A4 /* ContentView.swift */; };
 		1052834028C0DA81001CA6A4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1052833F28C0DA81001CA6A4 /* Assets.xcassets */; };
@@ -23,6 +22,14 @@
 		1052836728C0DAB1001CA6A4 /* ComposableArchitecture in Frameworks */ = {isa = PBXBuildFile; productRef = 1052836628C0DAB1001CA6A4 /* ComposableArchitecture */; };
 		1052836A28C0DB86001CA6A4 /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = 1052836928C0DB86001CA6A4 /* Realm */; };
 		1052836C28C0DB86001CA6A4 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 1052836B28C0DB86001CA6A4 /* RealmSwift */; };
+		1065439028EC31E2008964FF /* CombineMoya in Frameworks */ = {isa = PBXBuildFile; productRef = 1065438F28EC31E2008964FF /* CombineMoya */; };
+		1065439228EC31E2008964FF /* Moya in Frameworks */ = {isa = PBXBuildFile; productRef = 1065439128EC31E2008964FF /* Moya */; };
+		1065439A28EC9B7C008964FF /* MovieCardAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1065439528EC9B7C008964FF /* MovieCardAction.swift */; };
+		1065439B28EC9B7C008964FF /* MovieCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1065439628EC9B7C008964FF /* MovieCardView.swift */; };
+		1065439C28EC9B7C008964FF /* MovieCardEnvironment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1065439728EC9B7C008964FF /* MovieCardEnvironment.swift */; };
+		1065439D28EC9B7C008964FF /* MovieCardReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1065439828EC9B7C008964FF /* MovieCardReducer.swift */; };
+		1065439E28EC9B7C008964FF /* MovieCardState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1065439928EC9B7C008964FF /* MovieCardState.swift */; };
+		106543A328EDE54A008964FF /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 106543A228EDE54A008964FF /* Constants.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -43,11 +50,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		103039EA28D8372C009BC9E1 /* LogInAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInAction.swift; sourceTree = "<group>"; };
-		103039EB28D8372C009BC9E1 /* LogInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInView.swift; sourceTree = "<group>"; };
-		103039EC28D8372C009BC9E1 /* LogInEnvironment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInEnvironment.swift; sourceTree = "<group>"; };
-		103039ED28D8372C009BC9E1 /* LogInReducer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInReducer.swift; sourceTree = "<group>"; };
-		103039EE28D8372C009BC9E1 /* LogInState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInState.swift; sourceTree = "<group>"; };
+		10303A0228D8578A009BC9E1 /* HomeAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeAction.swift; sourceTree = "<group>"; };
+		10303A0328D8578A009BC9E1 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		10303A0428D8578A009BC9E1 /* HomeEnvironment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeEnvironment.swift; sourceTree = "<group>"; };
+		10303A0528D8578A009BC9E1 /* HomeReducer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeReducer.swift; sourceTree = "<group>"; };
+		10303A0628D8578A009BC9E1 /* HomeState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeState.swift; sourceTree = "<group>"; };
 		1052833828C0DA81001CA6A4 /* TCA-Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "TCA-Example.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		1052833B28C0DA81001CA6A4 /* TCA_ExampleApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TCA_ExampleApp.swift; sourceTree = "<group>"; };
 		1052833D28C0DA81001CA6A4 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -58,6 +65,12 @@
 		1052835228C0DA81001CA6A4 /* TCA-ExampleUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "TCA-ExampleUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		1052835628C0DA81001CA6A4 /* TCA_ExampleUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TCA_ExampleUITests.swift; sourceTree = "<group>"; };
 		1052835828C0DA81001CA6A4 /* TCA_ExampleUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TCA_ExampleUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		1065439528EC9B7C008964FF /* MovieCardAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieCardAction.swift; sourceTree = "<group>"; };
+		1065439628EC9B7C008964FF /* MovieCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieCardView.swift; sourceTree = "<group>"; };
+		1065439728EC9B7C008964FF /* MovieCardEnvironment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieCardEnvironment.swift; sourceTree = "<group>"; };
+		1065439828EC9B7C008964FF /* MovieCardReducer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieCardReducer.swift; sourceTree = "<group>"; };
+		1065439928EC9B7C008964FF /* MovieCardState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieCardState.swift; sourceTree = "<group>"; };
+		106543A228EDE54A008964FF /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,8 +79,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				1052836C28C0DB86001CA6A4 /* RealmSwift in Frameworks */,
-				103039F628D839FF009BC9E1 /* Alamofire in Frameworks */,
 				1052836A28C0DB86001CA6A4 /* Realm in Frameworks */,
+				1065439028EC31E2008964FF /* CombineMoya in Frameworks */,
+				1065439228EC31E2008964FF /* Moya in Frameworks */,
 				1052836728C0DAB1001CA6A4 /* ComposableArchitecture in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -89,16 +103,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		103039E928D83714009BC9E1 /* LogIn */ = {
+		10303A0C28D8579A009BC9E1 /* Home */ = {
 			isa = PBXGroup;
 			children = (
-				103039EA28D8372C009BC9E1 /* LogInAction.swift */,
-				103039EB28D8372C009BC9E1 /* LogInView.swift */,
-				103039EC28D8372C009BC9E1 /* LogInEnvironment.swift */,
-				103039ED28D8372C009BC9E1 /* LogInReducer.swift */,
-				103039EE28D8372C009BC9E1 /* LogInState.swift */,
+				10303A0228D8578A009BC9E1 /* HomeAction.swift */,
+				10303A0328D8578A009BC9E1 /* HomeView.swift */,
+				10303A0428D8578A009BC9E1 /* HomeEnvironment.swift */,
+				10303A0528D8578A009BC9E1 /* HomeReducer.swift */,
+				10303A0628D8578A009BC9E1 /* HomeState.swift */,
 			);
-			path = LogIn;
+			path = Home;
 			sourceTree = "<group>";
 		};
 		1052832F28C0DA81001CA6A4 = {
@@ -124,7 +138,11 @@
 		1052833A28C0DA81001CA6A4 /* TCA-Example */ = {
 			isa = PBXGroup;
 			children = (
-				103039E928D83714009BC9E1 /* LogIn */,
+				106543A128EDE53B008964FF /* Constants */,
+				1065439F28ED6A6A008964FF /* Network */,
+				1065439428EC9B5E008964FF /* MovieCard */,
+				1065439328EC9B5A008964FF /* Model */,
+				10303A0C28D8579A009BC9E1 /* Home */,
 				1052833B28C0DA81001CA6A4 /* TCA_ExampleApp.swift */,
 				1052833D28C0DA81001CA6A4 /* ContentView.swift */,
 				1052833F28C0DA81001CA6A4 /* Assets.xcassets */,
@@ -158,6 +176,48 @@
 			path = "TCA-ExampleUITests";
 			sourceTree = "<group>";
 		};
+		1065439328EC9B5A008964FF /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		1065439428EC9B5E008964FF /* MovieCard */ = {
+			isa = PBXGroup;
+			children = (
+				1065439528EC9B7C008964FF /* MovieCardAction.swift */,
+				1065439628EC9B7C008964FF /* MovieCardView.swift */,
+				1065439728EC9B7C008964FF /* MovieCardEnvironment.swift */,
+				1065439828EC9B7C008964FF /* MovieCardReducer.swift */,
+				1065439928EC9B7C008964FF /* MovieCardState.swift */,
+			);
+			path = MovieCard;
+			sourceTree = "<group>";
+		};
+		1065439F28ED6A6A008964FF /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				106543A028ED6A6F008964FF /* EndPoint */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		106543A028ED6A6F008964FF /* EndPoint */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = EndPoint;
+			sourceTree = "<group>";
+		};
+		106543A128EDE53B008964FF /* Constants */ = {
+			isa = PBXGroup;
+			children = (
+				106543A228EDE54A008964FF /* Constants.swift */,
+			);
+			path = Constants;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -178,7 +238,8 @@
 				1052836628C0DAB1001CA6A4 /* ComposableArchitecture */,
 				1052836928C0DB86001CA6A4 /* Realm */,
 				1052836B28C0DB86001CA6A4 /* RealmSwift */,
-				103039F528D839FF009BC9E1 /* Alamofire */,
+				1065438F28EC31E2008964FF /* CombineMoya */,
+				1065439128EC31E2008964FF /* Moya */,
 			);
 			productName = "TCA-Example";
 			productReference = 1052833828C0DA81001CA6A4 /* TCA-Example.app */;
@@ -255,7 +316,7 @@
 			packageReferences = (
 				1052836528C0DAB1001CA6A4 /* XCRemoteSwiftPackageReference "swift-composable-architecture" */,
 				1052836828C0DB86001CA6A4 /* XCRemoteSwiftPackageReference "realm-swift" */,
-				103039F428D839FF009BC9E1 /* XCRemoteSwiftPackageReference "Alamofire" */,
+				1065438E28EC31E2008964FF /* XCRemoteSwiftPackageReference "Moya" */,
 			);
 			productRefGroup = 1052833928C0DA81001CA6A4 /* Products */;
 			projectDirPath = "";
@@ -299,13 +360,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				103039F228D8372C009BC9E1 /* LogInReducer.swift in Sources */,
-				103039EF28D8372C009BC9E1 /* LogInAction.swift in Sources */,
+				1065439A28EC9B7C008964FF /* MovieCardAction.swift in Sources */,
+				10303A0828D8578A009BC9E1 /* HomeView.swift in Sources */,
+				1065439E28EC9B7C008964FF /* MovieCardState.swift in Sources */,
+				10303A0B28D8578A009BC9E1 /* HomeState.swift in Sources */,
 				1052833E28C0DA81001CA6A4 /* ContentView.swift in Sources */,
-				103039F328D8372C009BC9E1 /* LogInState.swift in Sources */,
-				103039F128D8372C009BC9E1 /* LogInEnvironment.swift in Sources */,
-				103039F028D8372C009BC9E1 /* LogInView.swift in Sources */,
+				1065439B28EC9B7C008964FF /* MovieCardView.swift in Sources */,
+				10303A0728D8578A009BC9E1 /* HomeAction.swift in Sources */,
+				106543A328EDE54A008964FF /* Constants.swift in Sources */,
+				1065439C28EC9B7C008964FF /* MovieCardEnvironment.swift in Sources */,
+				10303A0928D8578A009BC9E1 /* HomeEnvironment.swift in Sources */,
+				1065439D28EC9B7C008964FF /* MovieCardReducer.swift in Sources */,
 				1052833C28C0DA81001CA6A4 /* TCA_ExampleApp.swift in Sources */,
+				10303A0A28D8578A009BC9E1 /* HomeReducer.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -632,14 +699,6 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		103039F428D839FF009BC9E1 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/Alamofire/Alamofire.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 5.0.0;
-			};
-		};
 		1052836528C0DAB1001CA6A4 /* XCRemoteSwiftPackageReference "swift-composable-architecture" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/pointfreeco/swift-composable-architecture";
@@ -656,14 +715,17 @@
 				kind = branch;
 			};
 		};
+		1065438E28EC31E2008964FF /* XCRemoteSwiftPackageReference "Moya" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Moya/Moya.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 15.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		103039F528D839FF009BC9E1 /* Alamofire */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 103039F428D839FF009BC9E1 /* XCRemoteSwiftPackageReference "Alamofire" */;
-			productName = Alamofire;
-		};
 		1052836628C0DAB1001CA6A4 /* ComposableArchitecture */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 1052836528C0DAB1001CA6A4 /* XCRemoteSwiftPackageReference "swift-composable-architecture" */;
@@ -678,6 +740,16 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 1052836828C0DB86001CA6A4 /* XCRemoteSwiftPackageReference "realm-swift" */;
 			productName = RealmSwift;
+		};
+		1065438F28EC31E2008964FF /* CombineMoya */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 1065438E28EC31E2008964FF /* XCRemoteSwiftPackageReference "Moya" */;
+			productName = CombineMoya;
+		};
+		1065439128EC31E2008964FF /* Moya */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 1065438E28EC31E2008964FF /* XCRemoteSwiftPackageReference "Moya" */;
+			productName = Moya;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
