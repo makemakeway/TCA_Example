@@ -30,6 +30,7 @@
 		1065439D28EC9B7C008964FF /* MovieCardReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1065439828EC9B7C008964FF /* MovieCardReducer.swift */; };
 		1065439E28EC9B7C008964FF /* MovieCardState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1065439928EC9B7C008964FF /* MovieCardState.swift */; };
 		106543A328EDE54A008964FF /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 106543A228EDE54A008964FF /* Constants.swift */; };
+		106543A628EDE704008964FF /* Font+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 106543A528EDE704008964FF /* Font+Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -71,6 +72,7 @@
 		1065439828EC9B7C008964FF /* MovieCardReducer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieCardReducer.swift; sourceTree = "<group>"; };
 		1065439928EC9B7C008964FF /* MovieCardState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieCardState.swift; sourceTree = "<group>"; };
 		106543A228EDE54A008964FF /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		106543A528EDE704008964FF /* Font+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Font+Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -138,6 +140,7 @@
 		1052833A28C0DA81001CA6A4 /* TCA-Example */ = {
 			isa = PBXGroup;
 			children = (
+				106543A428EDE6FC008964FF /* Extension */,
 				106543A128EDE53B008964FF /* Constants */,
 				1065439F28ED6A6A008964FF /* Network */,
 				1065439428EC9B5E008964FF /* MovieCard */,
@@ -216,6 +219,14 @@
 				106543A228EDE54A008964FF /* Constants.swift */,
 			);
 			path = Constants;
+			sourceTree = "<group>";
+		};
+		106543A428EDE6FC008964FF /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				106543A528EDE704008964FF /* Font+Extension.swift */,
+			);
+			path = Extension;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -372,6 +383,7 @@
 				10303A0928D8578A009BC9E1 /* HomeEnvironment.swift in Sources */,
 				1065439D28EC9B7C008964FF /* MovieCardReducer.swift in Sources */,
 				1052833C28C0DA81001CA6A4 /* TCA_ExampleApp.swift in Sources */,
+				106543A628EDE704008964FF /* Font+Extension.swift in Sources */,
 				10303A0A28D8578A009BC9E1 /* HomeReducer.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

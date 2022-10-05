@@ -14,6 +14,7 @@ public struct MovieCardView: View {
   @ObservedObject
   private var viewStore: MovieCardViewStore
   private let store: MovieCardStore
+  private let cardCornerRadius: CGFloat = 8
 
   public init(store: MovieCardStore) {
     self.viewStore = ViewStore(store)
@@ -22,16 +23,18 @@ public struct MovieCardView: View {
 
   public var body: some View {
     ZStack {
-      VStack(alignment: .leading, spacing: 0) {
+      VStack(alignment: .leading, spacing: 8) {
         Image(systemName: "person.fill")
           .resizable()
-          .background(Color.mint)
-          .frame(width: UIScreen.main.bounds.width, height: 400)
-        
+          .background(Color.mint.cornerRadius(cardCornerRadius))
+          .frame(maxWidth: Constants.width, maxHeight: Constants.width)
         Text("Title")
         Text("SUBTitle")
+          .padding(.bottom, 8)
       }
-      .padding(.horizontal, 10)
+      .frame(maxWidth: .infinity)
+      .padding(.horizontal, 20)
+      .background(Color.orange)
     }
   }
 }

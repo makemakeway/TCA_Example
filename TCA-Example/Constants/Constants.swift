@@ -8,6 +8,6 @@
 import UIKit
 
 public struct Constants {
-  public let width: CGFloat = UIScreen.main.bounds.width
-  public let height: CGFloat = UIScreen.main.bounds.height
+  static public let width: CGFloat = UIScreen.main.bounds.width
+  static public let height: CGFloat = UIScreen.main.bounds.height
 }
