@@ -22,20 +22,26 @@ public struct MovieCardView: View {
   }
 
   public var body: some View {
-    ZStack {
+    GeometryReader { proxy in
       VStack(alignment: .leading, spacing: 8) {
         Image(systemName: "person.fill")
           .resizable()
           .background(Color.mint.cornerRadius(cardCornerRadius))
-          .frame(maxWidth: Constants.width, maxHeight: Constants.width)
+          .frame(maxWidth: proxy.size.width, maxHeight: proxy.size.width)
         Text("Title")
+          .font(.fontMaker(weight: .bold, size: 18))
         Text("SUBTitle")
           .padding(.bottom, 8)
+          .font(.fontMaker(weight: .semibold, size: 16))
       }
       .frame(maxWidth: .infinity)
-      .padding(.horizontal, 20)
-      .background(Color.orange)
+      .padding([.horizontal, .top], 10)
+      .background(
+        RoundedRectangle(cornerRadius: cardCornerRadius)
+          .stroke(.black, lineWidth: 1)
+      )
     }
+    .padding(.horizontal, 20)
   }
 }
 
