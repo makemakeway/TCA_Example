@@ -31,6 +31,7 @@
 		1065439E28EC9B7C008964FF /* MovieCardState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1065439928EC9B7C008964FF /* MovieCardState.swift */; };
 		106543A328EDE54A008964FF /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 106543A228EDE54A008964FF /* Constants.swift */; };
 		106543A628EDE704008964FF /* Font+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 106543A528EDE704008964FF /* Font+Extension.swift */; };
+		106543A828F4E3A4008964FF /* MovieEndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 106543A728F4E3A4008964FF /* MovieEndPoint.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -73,6 +74,7 @@
 		1065439928EC9B7C008964FF /* MovieCardState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieCardState.swift; sourceTree = "<group>"; };
 		106543A228EDE54A008964FF /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		106543A528EDE704008964FF /* Font+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Font+Extension.swift"; sourceTree = "<group>"; };
+		106543A728F4E3A4008964FF /* MovieEndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieEndPoint.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -209,6 +211,7 @@
 		106543A028ED6A6F008964FF /* EndPoint */ = {
 			isa = PBXGroup;
 			children = (
+				106543A728F4E3A4008964FF /* MovieEndPoint.swift */,
 			);
 			path = EndPoint;
 			sourceTree = "<group>";
@@ -383,6 +386,7 @@
 				10303A0928D8578A009BC9E1 /* HomeEnvironment.swift in Sources */,
 				1065439D28EC9B7C008964FF /* MovieCardReducer.swift in Sources */,
 				1052833C28C0DA81001CA6A4 /* TCA_ExampleApp.swift in Sources */,
+				106543A828F4E3A4008964FF /* MovieEndPoint.swift in Sources */,
 				106543A628EDE704008964FF /* Font+Extension.swift in Sources */,
 				10303A0A28D8578A009BC9E1 /* HomeReducer.swift in Sources */,
 			);
