@@ -32,6 +32,9 @@
 		106543A328EDE54A008964FF /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 106543A228EDE54A008964FF /* Constants.swift */; };
 		106543A628EDE704008964FF /* Font+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 106543A528EDE704008964FF /* Font+Extension.swift */; };
 		106543A828F4E3A4008964FF /* MovieEndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 106543A728F4E3A4008964FF /* MovieEndPoint.swift */; };
+		106543AD28F4F4EA008964FF /* MovieService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 106543AC28F4F4EA008964FF /* MovieService.swift */; };
+		106543B028F4F824008964FF /* MoviePlugin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 106543AF28F4F824008964FF /* MoviePlugin.swift */; };
+		106543B228F50103008964FF /* URL+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 106543B128F50103008964FF /* URL+Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -75,6 +78,11 @@
 		106543A228EDE54A008964FF /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		106543A528EDE704008964FF /* Font+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Font+Extension.swift"; sourceTree = "<group>"; };
 		106543A728F4E3A4008964FF /* MovieEndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieEndPoint.swift; sourceTree = "<group>"; };
+		106543A928F4EEBA008964FF /* Secrets.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Secrets.xcconfig; sourceTree = "<group>"; };
+		106543AA28F4F012008964FF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		106543AC28F4F4EA008964FF /* MovieService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieService.swift; sourceTree = "<group>"; };
+		106543AF28F4F824008964FF /* MoviePlugin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviePlugin.swift; sourceTree = "<group>"; };
+		106543B128F50103008964FF /* URL+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URL+Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -122,6 +130,7 @@
 		1052832F28C0DA81001CA6A4 = {
 			isa = PBXGroup;
 			children = (
+				106543A928F4EEBA008964FF /* Secrets.xcconfig */,
 				1052833A28C0DA81001CA6A4 /* TCA-Example */,
 				1052834B28C0DA81001CA6A4 /* TCA-ExampleTests */,
 				1052835528C0DA81001CA6A4 /* TCA-ExampleUITests */,
@@ -142,6 +151,7 @@
 		1052833A28C0DA81001CA6A4 /* TCA-Example */ = {
 			isa = PBXGroup;
 			children = (
+				106543AA28F4F012008964FF /* Info.plist */,
 				106543A428EDE6FC008964FF /* Extension */,
 				106543A128EDE53B008964FF /* Constants */,
 				1065439F28ED6A6A008964FF /* Network */,
@@ -203,6 +213,7 @@
 		1065439F28ED6A6A008964FF /* Network */ = {
 			isa = PBXGroup;
 			children = (
+				106543AB28F4F4DF008964FF /* Service */,
 				106543A028ED6A6F008964FF /* EndPoint */,
 			);
 			path = Network;
@@ -212,6 +223,7 @@
 			isa = PBXGroup;
 			children = (
 				106543A728F4E3A4008964FF /* MovieEndPoint.swift */,
+				106543AF28F4F824008964FF /* MoviePlugin.swift */,
 			);
 			path = EndPoint;
 			sourceTree = "<group>";
@@ -228,8 +240,17 @@
 			isa = PBXGroup;
 			children = (
 				106543A528EDE704008964FF /* Font+Extension.swift */,
+				106543B128F50103008964FF /* URL+Extension.swift */,
 			);
 			path = Extension;
+			sourceTree = "<group>";
+		};
+		106543AB28F4F4DF008964FF /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				106543AC28F4F4EA008964FF /* MovieService.swift */,
+			);
+			path = Service;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -379,6 +400,7 @@
 				1065439E28EC9B7C008964FF /* MovieCardState.swift in Sources */,
 				10303A0B28D8578A009BC9E1 /* HomeState.swift in Sources */,
 				1052833E28C0DA81001CA6A4 /* ContentView.swift in Sources */,
+				106543B228F50103008964FF /* URL+Extension.swift in Sources */,
 				1065439B28EC9B7C008964FF /* MovieCardView.swift in Sources */,
 				10303A0728D8578A009BC9E1 /* HomeAction.swift in Sources */,
 				106543A328EDE54A008964FF /* Constants.swift in Sources */,
@@ -388,7 +410,9 @@
 				1052833C28C0DA81001CA6A4 /* TCA_ExampleApp.swift in Sources */,
 				106543A828F4E3A4008964FF /* MovieEndPoint.swift in Sources */,
 				106543A628EDE704008964FF /* Font+Extension.swift in Sources */,
+				106543AD28F4F4EA008964FF /* MovieService.swift in Sources */,
 				10303A0A28D8578A009BC9E1 /* HomeReducer.swift in Sources */,
+				106543B028F4F824008964FF /* MoviePlugin.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -541,6 +565,7 @@
 		};
 		1052835D28C0DA81001CA6A4 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 106543A928F4EEBA008964FF /* Secrets.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -550,6 +575,7 @@
 				DEVELOPMENT_TEAM = G959C5W2NC;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "TCA-Example/Info.plist";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -579,6 +605,7 @@
 				DEVELOPMENT_TEAM = G959C5W2NC;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "TCA-Example/Info.plist";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -599,6 +626,7 @@
 		};
 		1052836028C0DA81001CA6A4 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 106543A928F4EEBA008964FF /* Secrets.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
