@@ -18,7 +18,18 @@ public extension HomeReducer {
     self = Self
       .combine(
         .init { state, action, environment in
-          .none
+          switch action {
+          case let .fetchNewMovies(page):
+            return .task {
+              await .newMoviesResponse(TaskResult { try await environment.movieService.fetchNewMovies(page) })
+            }
+          case let .newMoviesResponse(.success(movies)):
+            state.newMovies = movies
+            return .none
+          case let .newMoviesResponse(.failure(error)):
+            print(error)
+            return .none
+          }
         }
       )
   }

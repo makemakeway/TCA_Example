@@ -22,8 +22,6 @@
 		1052836728C0DAB1001CA6A4 /* ComposableArchitecture in Frameworks */ = {isa = PBXBuildFile; productRef = 1052836628C0DAB1001CA6A4 /* ComposableArchitecture */; };
 		1052836A28C0DB86001CA6A4 /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = 1052836928C0DB86001CA6A4 /* Realm */; };
 		1052836C28C0DB86001CA6A4 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 1052836B28C0DB86001CA6A4 /* RealmSwift */; };
-		1065439028EC31E2008964FF /* CombineMoya in Frameworks */ = {isa = PBXBuildFile; productRef = 1065438F28EC31E2008964FF /* CombineMoya */; };
-		1065439228EC31E2008964FF /* Moya in Frameworks */ = {isa = PBXBuildFile; productRef = 1065439128EC31E2008964FF /* Moya */; };
 		1065439A28EC9B7C008964FF /* MovieCardAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1065439528EC9B7C008964FF /* MovieCardAction.swift */; };
 		1065439B28EC9B7C008964FF /* MovieCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1065439628EC9B7C008964FF /* MovieCardView.swift */; };
 		1065439C28EC9B7C008964FF /* MovieCardEnvironment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1065439728EC9B7C008964FF /* MovieCardEnvironment.swift */; };
@@ -33,8 +31,9 @@
 		106543A628EDE704008964FF /* Font+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 106543A528EDE704008964FF /* Font+Extension.swift */; };
 		106543A828F4E3A4008964FF /* MovieEndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 106543A728F4E3A4008964FF /* MovieEndPoint.swift */; };
 		106543AD28F4F4EA008964FF /* MovieService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 106543AC28F4F4EA008964FF /* MovieService.swift */; };
-		106543B028F4F824008964FF /* MoviePlugin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 106543AF28F4F824008964FF /* MoviePlugin.swift */; };
 		106543B228F50103008964FF /* URL+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 106543B128F50103008964FF /* URL+Extension.swift */; };
+		106543CC28F638C2008964FF /* Movie.swift in Sources */ = {isa = PBXBuildFile; fileRef = 106543CB28F638C2008964FF /* Movie.swift */; };
+		106543D528F647C6008964FF /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 106543D428F647C6008964FF /* Alamofire */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -81,8 +80,8 @@
 		106543A928F4EEBA008964FF /* Secrets.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Secrets.xcconfig; sourceTree = "<group>"; };
 		106543AA28F4F012008964FF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		106543AC28F4F4EA008964FF /* MovieService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieService.swift; sourceTree = "<group>"; };
-		106543AF28F4F824008964FF /* MoviePlugin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviePlugin.swift; sourceTree = "<group>"; };
 		106543B128F50103008964FF /* URL+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URL+Extension.swift"; sourceTree = "<group>"; };
+		106543CB28F638C2008964FF /* Movie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Movie.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -91,9 +90,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				1052836C28C0DB86001CA6A4 /* RealmSwift in Frameworks */,
+				106543D528F647C6008964FF /* Alamofire in Frameworks */,
 				1052836A28C0DB86001CA6A4 /* Realm in Frameworks */,
-				1065439028EC31E2008964FF /* CombineMoya in Frameworks */,
-				1065439228EC31E2008964FF /* Moya in Frameworks */,
 				1052836728C0DAB1001CA6A4 /* ComposableArchitecture in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -194,6 +192,7 @@
 		1065439328EC9B5A008964FF /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				106543CB28F638C2008964FF /* Movie.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -223,7 +222,6 @@
 			isa = PBXGroup;
 			children = (
 				106543A728F4E3A4008964FF /* MovieEndPoint.swift */,
-				106543AF28F4F824008964FF /* MoviePlugin.swift */,
 			);
 			path = EndPoint;
 			sourceTree = "<group>";
@@ -273,8 +271,7 @@
 				1052836628C0DAB1001CA6A4 /* ComposableArchitecture */,
 				1052836928C0DB86001CA6A4 /* Realm */,
 				1052836B28C0DB86001CA6A4 /* RealmSwift */,
-				1065438F28EC31E2008964FF /* CombineMoya */,
-				1065439128EC31E2008964FF /* Moya */,
+				106543D428F647C6008964FF /* Alamofire */,
 			);
 			productName = "TCA-Example";
 			productReference = 1052833828C0DA81001CA6A4 /* TCA-Example.app */;
@@ -351,7 +348,7 @@
 			packageReferences = (
 				1052836528C0DAB1001CA6A4 /* XCRemoteSwiftPackageReference "swift-composable-architecture" */,
 				1052836828C0DB86001CA6A4 /* XCRemoteSwiftPackageReference "realm-swift" */,
-				1065438E28EC31E2008964FF /* XCRemoteSwiftPackageReference "Moya" */,
+				106543D328F647C6008964FF /* XCRemoteSwiftPackageReference "Alamofire" */,
 			);
 			productRefGroup = 1052833928C0DA81001CA6A4 /* Products */;
 			projectDirPath = "";
@@ -407,12 +404,12 @@
 				1065439C28EC9B7C008964FF /* MovieCardEnvironment.swift in Sources */,
 				10303A0928D8578A009BC9E1 /* HomeEnvironment.swift in Sources */,
 				1065439D28EC9B7C008964FF /* MovieCardReducer.swift in Sources */,
+				106543CC28F638C2008964FF /* Movie.swift in Sources */,
 				1052833C28C0DA81001CA6A4 /* TCA_ExampleApp.swift in Sources */,
 				106543A828F4E3A4008964FF /* MovieEndPoint.swift in Sources */,
 				106543A628EDE704008964FF /* Font+Extension.swift in Sources */,
 				106543AD28F4F4EA008964FF /* MovieService.swift in Sources */,
 				10303A0A28D8578A009BC9E1 /* HomeReducer.swift in Sources */,
-				106543B028F4F824008964FF /* MoviePlugin.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -759,12 +756,12 @@
 				kind = branch;
 			};
 		};
-		1065438E28EC31E2008964FF /* XCRemoteSwiftPackageReference "Moya" */ = {
+		106543D328F647C6008964FF /* XCRemoteSwiftPackageReference "Alamofire" */ = {
 			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/Moya/Moya.git";
+			repositoryURL = "https://github.com/Alamofire/Alamofire.git";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 15.0.0;
+				minimumVersion = 5.5.0;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
@@ -785,15 +782,10 @@
 			package = 1052836828C0DB86001CA6A4 /* XCRemoteSwiftPackageReference "realm-swift" */;
 			productName = RealmSwift;
 		};
-		1065438F28EC31E2008964FF /* CombineMoya */ = {
+		106543D428F647C6008964FF /* Alamofire */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 1065438E28EC31E2008964FF /* XCRemoteSwiftPackageReference "Moya" */;
-			productName = CombineMoya;
-		};
-		1065439128EC31E2008964FF /* Moya */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 1065438E28EC31E2008964FF /* XCRemoteSwiftPackageReference "Moya" */;
-			productName = Moya;
+			package = 106543D328F647C6008964FF /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = Alamofire;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

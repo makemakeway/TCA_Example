@@ -6,6 +6,8 @@
 //
 
 public struct HomeEnvironment {
+  public let movieService = MovieService.live
+  
   public init() {
   }
 }

@@ -16,14 +16,24 @@ public struct HomeView: View {
   private var viewStore: HomeViewStore
 
   private let store: HomeStore
-
+  
   public init(store: HomeStore) {
     self.viewStore = ViewStore(store)
     self.store = store
   }
 
   public var body: some View {
-    Text("Hello, Home!")
+    WithViewStore(self.store) { viewStore in
+      List(viewStore.newMovies?.results ?? [], id: \.id) { movie in
+        Text(movie.title ?? "")
+      }
+      .task {
+        viewStore.send(.fetchNewMovies(page: 1))
+      }
+      .refreshable {
+        viewStore.send(.fetchNewMovies(page: 1))
+      }
+    }
   }
 }
 

@@ -7,9 +7,32 @@
 
 import Foundation
 
-import Moya
+import Alamofire
+import ComposableArchitecture
+
+public enum MovieError: String, Error {
+  case some
+}
 
 public struct MovieService {
-  static let apiKey = Bundle.main.object(forInfoDictionaryKey: "API_KEY") as? String ?? ""
-  static let provider = MoyaProvider<MovieEndPoint>()
+  public typealias NewMoviesResponse = (Int) async throws -> NewMoviesModel
+  
+  public var fetchNewMovies: NewMoviesResponse
+  
+  static func request<T: Decodable>(
+    _ object: T.Type,
+    request: URLRequestConvertible
+  ) async throws -> T {
+    return try await AF.request(request)
+      .serializingDecodable()
+      .value
+  }
+}
+
+extension MovieService {
+  static let live = Self(
+    fetchNewMovies: { page in
+      return try await MovieService.request(NewMoviesModel.self, request: MovieEndPoint.fetchNewMovies(page: page))
+    }
+  )
 }

@@ -6,6 +6,9 @@
 //
 
 public struct HomeState: Equatable {
+  public var newMovies: NewMoviesModel? = nil
+  
   public init() {
+    
   }
 }
