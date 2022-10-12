@@ -24,21 +24,21 @@ public struct HomeView: View {
 
   public var body: some View {
     WithViewStore(self.store) { viewStore in
-      List {
-        ForEach(viewStore.newMovies, id: \.page) { movies in
-          ForEach(movies.results ?? [], id: \.id) { movie in
-            Text(movie.title ?? "")
+      ScrollView {
+        LazyVStack(spacing: 20) {
+          ForEach(viewStore.newMovies, id: \.page) { movies in
+            ForEach(movies.results ?? [], id: \.id) { movie in
+              Text(movie.title ?? "")
+            }
+          }
+          if !viewStore.newMovieLastPageLoaded {
+            ProgressView()
+              .task {
+                print("FETCH \(viewStore.newMoviePage)PAGE")
+                viewStore.send(.fetchNewMovies(currentPage: viewStore.newMoviePage))
+              }
           }
         }
-        if !viewStore.newMovieLastPageLoaded {
-          ProgressView()
-            .task {
-              viewStore.send(.fetchNewMovies(currentPage: viewStore.newMoviePage + 1))
-            }
-        }
-      }
-      .task {
-        viewStore.send(.fetchNewMovies(currentPage: viewStore.newMoviePage))
       }
     }
   }

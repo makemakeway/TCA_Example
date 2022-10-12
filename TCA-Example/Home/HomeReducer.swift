@@ -29,13 +29,13 @@ public extension HomeReducer {
             }
           case let .newMoviesResponse(.success(movies)):
             var currentMovies = state.newMovies
-            if !currentMovies.contains(movies) {
-              currentMovies.append(movies)
-              state.newMoviePage = movies.page ?? 1
-              state.newMovies = currentMovies
-            }
             if state.newMoviePage == movies.totalPages {
               state.newMovieLastPageLoaded = true
+            }
+            if !currentMovies.contains(movies) {
+              currentMovies.append(movies)
+              state.newMoviePage = (movies.page ?? 1) + 1
+              state.newMovies = currentMovies
             }
             return .none
           case let .newMoviesResponse(.failure(error)):
