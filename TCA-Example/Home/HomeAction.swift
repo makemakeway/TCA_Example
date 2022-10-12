@@ -10,6 +10,6 @@ import Foundation
 import ComposableArchitecture
 
 public enum HomeAction: Equatable {
-  case fetchNewMovies(page: Int)
+  case fetchNewMovies(currentPage: Int)
   case newMoviesResponse(TaskResult<NewMoviesModel>)
 }

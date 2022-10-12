@@ -19,12 +19,24 @@ public extension HomeReducer {
       .combine(
         .init { state, action, environment in
           switch action {
-          case let .fetchNewMovies(page):
-            return .task {
-              await .newMoviesResponse(TaskResult { try await environment.movieService.fetchNewMovies(page) })
+          case .fetchNewMovies(let currentPage):
+            if !state.newMovieLastPageLoaded {
+              return .task {
+                await .newMoviesResponse(TaskResult { try await environment.movieService.fetchNewMovies(currentPage) })
+              }
+            } else {
+              return .none
             }
           case let .newMoviesResponse(.success(movies)):
-            state.newMovies = movies
+            var currentMovies = state.newMovies
+            if !currentMovies.contains(movies) {
+              currentMovies.append(movies)
+              state.newMoviePage = movies.page ?? 1
+              state.newMovies = currentMovies
+            }
+            if state.newMoviePage == movies.totalPages {
+              state.newMovieLastPageLoaded = true
+            }
             return .none
           case let .newMoviesResponse(.failure(error)):
             print(error)

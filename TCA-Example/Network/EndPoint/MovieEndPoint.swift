@@ -25,11 +25,11 @@ public enum MovieEndPoint: URLRequestConvertible {
   private var path: String {
     let baseURL = MovieAPIConstants.baseURL.absoluteString
     switch self {
-    case let .fetchMovieDetail(id):
+    case .fetchMovieDetail:
       return baseURL + "/movie"
-    case let .fetchNewMovies(page):
+    case .fetchNewMovies:
       return baseURL + "/movie/now_playing"
-    case let .searchMovie(query, page):
+    case .searchMovie:
       return baseURL + "/search/movie"
     case .fetchMovieGenreList:
       return baseURL + "/genre/movie/list"
@@ -60,10 +60,14 @@ public enum MovieEndPoint: URLRequestConvertible {
   
   public func asURLRequest() throws -> URLRequest {
     let url = try path.asURL().appending("api_key", value: MovieAPIConstants.key)
-    print(url)
     var request = URLRequest(url: url)
     request.method = self.method
     request.setValue(ContentType.json.rawValue, forHTTPHeaderField: HTTPHeaderField.contentType.rawValue)
+    
+    if let parameters = parameters {
+      return try encoding.encode(request, with: parameters)
+    }
+    
     return request
   }
 }

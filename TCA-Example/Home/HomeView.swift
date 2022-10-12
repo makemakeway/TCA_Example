@@ -24,14 +24,21 @@ public struct HomeView: View {
 
   public var body: some View {
     WithViewStore(self.store) { viewStore in
-      List(viewStore.newMovies?.results ?? [], id: \.id) { movie in
-        Text(movie.title ?? "")
+      List {
+        ForEach(viewStore.newMovies, id: \.page) { movies in
+          ForEach(movies.results ?? [], id: \.id) { movie in
+            Text(movie.title ?? "")
+          }
+        }
+        if !viewStore.newMovieLastPageLoaded {
+          ProgressView()
+            .task {
+              viewStore.send(.fetchNewMovies(currentPage: viewStore.newMoviePage + 1))
+            }
+        }
       }
       .task {
-        viewStore.send(.fetchNewMovies(page: 1))
-      }
-      .refreshable {
-        viewStore.send(.fetchNewMovies(page: 1))
+        viewStore.send(.fetchNewMovies(currentPage: viewStore.newMoviePage))
       }
     }
   }

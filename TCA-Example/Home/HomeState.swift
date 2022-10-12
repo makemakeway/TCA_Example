@@ -6,7 +6,9 @@
 //
 
 public struct HomeState: Equatable {
-  public var newMovies: NewMoviesModel? = nil
+  public var newMovies: [NewMoviesModel] = []
+  public var newMoviePage: Int = 1
+  public var newMovieLastPageLoaded: Bool = false
   
   public init() {
     
