@@ -28,11 +28,12 @@ public struct HomeView: View {
         Section {
           VStack(spacing: 0) {
             HStack {
-              Text("현재 상영중인 영화")
+              Text("현재 상영중")
                 .font(.fontMaker(weight: .bold, size: 20))
               Spacer()
             }
             .padding(.horizontal, 20)
+            .padding(.bottom, 10)
             
             ScrollView(.horizontal, showsIndicators: false) {
               LazyHStack(spacing: 10) {
@@ -49,14 +50,20 @@ public struct HomeView: View {
                     }
                 }
               }
+              .padding(.horizontal, 10)
             }
           }
-          .frame(maxWidth: .infinity)
-          .padding(.horizontal, 10)
         }
         
         Section {
           
+        }
+      }
+      .navigationBarTitleDisplayMode(.inline)
+      .toolbar {
+        ToolbarItem(placement: .principal) {
+          Text("Movie Database")
+            .font(.fontMaker(weight: .bold, size: 18))
         }
       }
     }

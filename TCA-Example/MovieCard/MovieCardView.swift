@@ -44,7 +44,7 @@ public struct MovieCardView: View {
     .padding([.horizontal, .top], 10)
     .background(
       RoundedRectangle(cornerRadius: cardCornerRadius)
-        .stroke(.black, lineWidth: 1)
+        .strokeBorder(lineWidth: 1)
     )
   }
 }
