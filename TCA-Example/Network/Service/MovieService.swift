@@ -32,7 +32,7 @@ public struct MovieService {
 extension MovieService {
   static let live = Self(
     fetchNewMovies: { page in
-      return try await MovieService.request(NewMoviesModel.self, request: MovieEndPoint.fetchNewMovies(page: page))
+      return try await MovieService.request(NewMoviesModel.self, request: MovieEndPoint.fetchNowPlaying(page: page))
     }
   )
 }

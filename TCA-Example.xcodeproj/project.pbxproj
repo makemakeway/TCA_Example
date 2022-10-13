@@ -22,11 +22,7 @@
 		1052836728C0DAB1001CA6A4 /* ComposableArchitecture in Frameworks */ = {isa = PBXBuildFile; productRef = 1052836628C0DAB1001CA6A4 /* ComposableArchitecture */; };
 		1052836A28C0DB86001CA6A4 /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = 1052836928C0DB86001CA6A4 /* Realm */; };
 		1052836C28C0DB86001CA6A4 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 1052836B28C0DB86001CA6A4 /* RealmSwift */; };
-		1065439A28EC9B7C008964FF /* MovieCardAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1065439528EC9B7C008964FF /* MovieCardAction.swift */; };
 		1065439B28EC9B7C008964FF /* MovieCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1065439628EC9B7C008964FF /* MovieCardView.swift */; };
-		1065439C28EC9B7C008964FF /* MovieCardEnvironment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1065439728EC9B7C008964FF /* MovieCardEnvironment.swift */; };
-		1065439D28EC9B7C008964FF /* MovieCardReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1065439828EC9B7C008964FF /* MovieCardReducer.swift */; };
-		1065439E28EC9B7C008964FF /* MovieCardState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1065439928EC9B7C008964FF /* MovieCardState.swift */; };
 		106543A328EDE54A008964FF /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 106543A228EDE54A008964FF /* Constants.swift */; };
 		106543A628EDE704008964FF /* Font+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 106543A528EDE704008964FF /* Font+Extension.swift */; };
 		106543A828F4E3A4008964FF /* MovieEndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 106543A728F4E3A4008964FF /* MovieEndPoint.swift */; };
@@ -69,11 +65,7 @@
 		1052835228C0DA81001CA6A4 /* TCA-ExampleUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "TCA-ExampleUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		1052835628C0DA81001CA6A4 /* TCA_ExampleUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TCA_ExampleUITests.swift; sourceTree = "<group>"; };
 		1052835828C0DA81001CA6A4 /* TCA_ExampleUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TCA_ExampleUITestsLaunchTests.swift; sourceTree = "<group>"; };
-		1065439528EC9B7C008964FF /* MovieCardAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieCardAction.swift; sourceTree = "<group>"; };
 		1065439628EC9B7C008964FF /* MovieCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieCardView.swift; sourceTree = "<group>"; };
-		1065439728EC9B7C008964FF /* MovieCardEnvironment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieCardEnvironment.swift; sourceTree = "<group>"; };
-		1065439828EC9B7C008964FF /* MovieCardReducer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieCardReducer.swift; sourceTree = "<group>"; };
-		1065439928EC9B7C008964FF /* MovieCardState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieCardState.swift; sourceTree = "<group>"; };
 		106543A228EDE54A008964FF /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		106543A528EDE704008964FF /* Font+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Font+Extension.swift"; sourceTree = "<group>"; };
 		106543A728F4E3A4008964FF /* MovieEndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieEndPoint.swift; sourceTree = "<group>"; };
@@ -200,11 +192,7 @@
 		1065439428EC9B5E008964FF /* MovieCard */ = {
 			isa = PBXGroup;
 			children = (
-				1065439528EC9B7C008964FF /* MovieCardAction.swift */,
 				1065439628EC9B7C008964FF /* MovieCardView.swift */,
-				1065439728EC9B7C008964FF /* MovieCardEnvironment.swift */,
-				1065439828EC9B7C008964FF /* MovieCardReducer.swift */,
-				1065439928EC9B7C008964FF /* MovieCardState.swift */,
 			);
 			path = MovieCard;
 			sourceTree = "<group>";
@@ -392,18 +380,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1065439A28EC9B7C008964FF /* MovieCardAction.swift in Sources */,
 				10303A0828D8578A009BC9E1 /* HomeView.swift in Sources */,
-				1065439E28EC9B7C008964FF /* MovieCardState.swift in Sources */,
 				10303A0B28D8578A009BC9E1 /* HomeState.swift in Sources */,
 				1052833E28C0DA81001CA6A4 /* ContentView.swift in Sources */,
 				106543B228F50103008964FF /* URL+Extension.swift in Sources */,
 				1065439B28EC9B7C008964FF /* MovieCardView.swift in Sources */,
 				10303A0728D8578A009BC9E1 /* HomeAction.swift in Sources */,
 				106543A328EDE54A008964FF /* Constants.swift in Sources */,
-				1065439C28EC9B7C008964FF /* MovieCardEnvironment.swift in Sources */,
 				10303A0928D8578A009BC9E1 /* HomeEnvironment.swift in Sources */,
-				1065439D28EC9B7C008964FF /* MovieCardReducer.swift in Sources */,
 				106543CC28F638C2008964FF /* Movie.swift in Sources */,
 				1052833C28C0DA81001CA6A4 /* TCA_ExampleApp.swift in Sources */,
 				106543A828F4E3A4008964FF /* MovieEndPoint.swift in Sources */,
@@ -578,6 +562,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -608,6 +593,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

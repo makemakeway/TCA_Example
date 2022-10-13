@@ -10,14 +10,14 @@ import Foundation
 import Alamofire
 
 public enum MovieEndPoint: URLRequestConvertible {
-  case fetchNewMovies(page: Int)
+  case fetchNowPlaying(page: Int)
   case searchMovie(query: String, page: Int)
   case fetchMovieDetail(ID: Int)
   case fetchMovieGenreList
   
   private var method: HTTPMethod {
     switch self {
-    case .fetchNewMovies, .searchMovie, .fetchMovieGenreList, .fetchMovieDetail:
+    case .fetchNowPlaying, .searchMovie, .fetchMovieGenreList, .fetchMovieDetail:
       return .get
     }
   }
@@ -27,7 +27,7 @@ public enum MovieEndPoint: URLRequestConvertible {
     switch self {
     case .fetchMovieDetail:
       return baseURL + "/movie"
-    case .fetchNewMovies:
+    case .fetchNowPlaying:
       return baseURL + "/movie/now_playing"
     case .searchMovie:
       return baseURL + "/search/movie"
@@ -42,8 +42,8 @@ public enum MovieEndPoint: URLRequestConvertible {
       return ["movie_id":id]
     case let .searchMovie(query: query, page: page):
       return ["query":query, "page":page]
-    case let .fetchNewMovies(page: page):
-      return ["page":page]
+    case let .fetchNowPlaying(page: page):
+      return ["page":page, "language":"ko-KR"] // LANGUAGE
     case .fetchMovieGenreList:
       return nil
     }
@@ -51,7 +51,7 @@ public enum MovieEndPoint: URLRequestConvertible {
   
   private var encoding: ParameterEncoding {
     switch self {
-    case .fetchNewMovies, .fetchMovieDetail, .searchMovie:
+    case .fetchNowPlaying, .fetchMovieDetail, .searchMovie:
       return URLEncoding.queryString
     case .fetchMovieGenreList:
       return URLEncoding.default

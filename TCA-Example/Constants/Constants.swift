@@ -10,4 +10,5 @@ import UIKit
 public struct Constants {
   static public let width: CGFloat = UIScreen.main.bounds.width
   static public let height: CGFloat = UIScreen.main.bounds.height
+  static public var posterImageURL: URL = URL(string: "https://image.tmdb.org/t/p/original")!
 }

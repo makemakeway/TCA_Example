@@ -11,33 +11,52 @@ import SwiftUI
 // MARK: View
 
 public struct HomeView: View {
-
+  
   @ObservedObject
   private var viewStore: HomeViewStore
-
+  
   private let store: HomeStore
   
   public init(store: HomeStore) {
     self.viewStore = ViewStore(store)
     self.store = store
   }
-
+  
   public var body: some View {
     WithViewStore(self.store) { viewStore in
       ScrollView {
-        LazyVStack(spacing: 20) {
-          ForEach(viewStore.newMovies, id: \.page) { movies in
-            ForEach(movies.results ?? [], id: \.id) { movie in
-              Text(movie.title ?? "")
+        Section {
+          VStack(spacing: 0) {
+            HStack {
+              Text("현재 상영중인 영화")
+                .font(.fontMaker(weight: .bold, size: 20))
+              Spacer()
+            }
+            .padding(.horizontal, 20)
+            
+            ScrollView(.horizontal, showsIndicators: false) {
+              LazyHStack(spacing: 10) {
+                ForEach(viewStore.newMovies, id: \.page) { movies in
+                  ForEach(movies.results ?? [], id: \.id) { movie in
+                    MovieCardView(movie: movie)
+                  }
+                }
+                if !viewStore.newMovieLastPageLoaded {
+                  ProgressView()
+                    .task {
+                      print("FETCH \(viewStore.newMoviePage)PAGE")
+                      viewStore.send(.fetchNewMovies(currentPage: viewStore.newMoviePage))
+                    }
+                }
+              }
             }
           }
-          if !viewStore.newMovieLastPageLoaded {
-            ProgressView()
-              .task {
-                print("FETCH \(viewStore.newMoviePage)PAGE")
-                viewStore.send(.fetchNewMovies(currentPage: viewStore.newMoviePage))
-              }
-          }
+          .frame(maxWidth: .infinity)
+          .padding(.horizontal, 10)
+        }
+        
+        Section {
+          
         }
       }
     }
@@ -61,12 +80,12 @@ public typealias HomeViewStore = ViewStore<
 // MARK: Preview
 
 struct HomeView_Previews: PreviewProvider {
-
+  
   static var previews: some View {
     HomeView(store: store)
       .previewLayout(.sizeThatFits)
   }
-
+  
   static let store: HomeStore = .init(
     initialState: .init(),
     reducer: .init(),
