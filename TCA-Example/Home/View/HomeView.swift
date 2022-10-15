@@ -17,6 +17,9 @@ public struct HomeView: View {
   
   private let store: StoreOf<HomeFeature>
   
+  @State
+  var currentIndex: Int = 0
+  
   public init(store: StoreOf<HomeFeature>) {
     self.viewStore = ViewStore(store)
     self.store = store
@@ -61,6 +64,19 @@ public struct HomeView: View {
   public var body: some View {
     WithViewStore(self.store) { viewStore in
       ScrollView {
+        Section {
+          TabView(selection: $currentIndex) {
+            let data = [1, 2, 3, 4, 5]
+            ForEach(data, id: \.self) { _ in
+              Color.mint
+            }
+            
+          }
+          .tabViewStyle(.page)
+        }
+        .frame(height: Constants.height * 0.3)
+        
+        
         horizontalCardSection(
           title: "현재 상영중",
           movies: viewStore.newMovies,

@@ -14,10 +14,11 @@ public enum MovieEndPoint: URLRequestConvertible {
   case searchMovie(query: String, page: Int)
   case fetchMovieDetail(ID: Int)
   case fetchMovieGenreList
+  case fetchMovieLatest
   
   private var method: HTTPMethod {
     switch self {
-    case .fetchNowPlaying, .searchMovie, .fetchMovieGenreList, .fetchMovieDetail:
+    default:
       return .get
     }
   }
@@ -33,6 +34,8 @@ public enum MovieEndPoint: URLRequestConvertible {
       return baseURL + "/search/movie"
     case .fetchMovieGenreList:
       return baseURL + "/genre/movie/list"
+    case .fetchMovieLatest:
+      return baseURL + "/movie/latest"
     }
   }
   
@@ -44,8 +47,8 @@ public enum MovieEndPoint: URLRequestConvertible {
       return ["query":query, "page":page]
     case let .fetchNowPlaying(page: page):
       return ["page":page, "language":"ko-KR"] // LANGUAGE
-    case .fetchMovieGenreList:
-      return nil
+    default:
+      return ["language":"ko-KR"]
     }
   }
   
@@ -53,7 +56,7 @@ public enum MovieEndPoint: URLRequestConvertible {
     switch self {
     case .fetchNowPlaying, .fetchMovieDetail, .searchMovie:
       return URLEncoding.queryString
-    case .fetchMovieGenreList:
+    default:
       return URLEncoding.default
     }
   }

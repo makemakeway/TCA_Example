@@ -21,31 +21,32 @@ public struct MovieCardView: View {
   public var body: some View {
     let imagePath = Constants.posterImageURL.appendingPathComponent(movie.posterPath ?? "")
     VStack(alignment: .leading, spacing: 8) {
-      AsyncImage(url: imagePath) { image in
-        image
-          .resizable()
-          .aspectRatio(contentMode: .fit)
-          .cornerRadius(cardCornerRadius)
-          .frame(width: 200, height: 200)
-      } placeholder: {
-        Image(systemName: "photo.fill")
-          .resizable()
-          .frame(width: 200, height: 200)
+      VStack(spacing: 0) {
+        GeometryReader { proxy in
+          AsyncImage(url: imagePath) { image in
+            image
+              .resizable()
+              .aspectRatio(0.75, contentMode: .fill)
+              .frame(width: proxy.size.width, height: proxy.size.height, alignment: .center)
+              .cornerRadius(cardCornerRadius)
+              
+          } placeholder: {
+            ProgressView()
+              .progressViewStyle(.circular)
+              .tint(.orange)
+              .frame(width: proxy.size.width, height: proxy.size.height, alignment: .center)
+              .background(Color.black.cornerRadius(cardCornerRadius))
+          }
+        }
       }
-
+      .frame(width: 150, height: 250)
+      
       Text(movie.title ?? "")
-        .font(.fontMaker(weight: .bold, size: 18))
+        .font(.fontMaker(weight: .bold, size: 14))
         .foregroundColor(.black)
-      Text(movie.originalTitle ?? "")
-        .padding(.bottom, 8)
-        .font(.fontMaker(weight: .semibold, size: 16))
-        .foregroundColor(.black)
+        .padding([.bottom, .horizontal], 10)
     }
-    .padding([.horizontal, .top], 10)
-    .background(
-      RoundedRectangle(cornerRadius: cardCornerRadius)
-        .strokeBorder(lineWidth: 1)
-    )
+    .frame(maxWidth: 150)
   }
 }
 
