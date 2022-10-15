@@ -15,8 +15,7 @@ struct ContentView: View {
         HomeView(
           store: .init(
             initialState: .init(),
-            reducer: HomeReducer(),
-            environment: HomeEnvironment()
+            reducer: HomeFeature()
           )
         )
       }
