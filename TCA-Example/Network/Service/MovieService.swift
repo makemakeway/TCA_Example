@@ -16,7 +16,7 @@ public enum MovieError: String, Error {
 
 public struct MovieService {
   public typealias NowPlayingMoviesResponse = (Int) async throws -> NowPlayingMoviesModel
-  public typealias LatestMoviesResponse = () async throws -> LatestMovie
+  public typealias LatestMoviesResponse = (Int) async throws -> UpcomingMovie
   
   public var fetchNowPlayingMovies: NowPlayingMoviesResponse
   public var fetchLatestMovies: LatestMoviesResponse
@@ -36,8 +36,8 @@ extension MovieService {
     fetchNowPlayingMovies: { page in
       return try await MovieService.request(NowPlayingMoviesModel.self, request: MovieEndPoint.fetchNowPlaying(page: page))
     },
-    fetchLatestMovies: {
-      return try await MovieService.request(LatestMovie.self, request: MovieEndPoint.fetchMovieLatest)
+    fetchLatestMovies: { page in
+      return try await MovieService.request(UpcomingMovie.self, request: MovieEndPoint.fetchUpcomingMovies(page: page))
     }
   )
 }

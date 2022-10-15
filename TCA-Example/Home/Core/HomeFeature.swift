@@ -18,6 +18,8 @@ public struct HomeFeature: ReducerProtocol {
     public var nowMoviePage: Int = 1
     public var nowMovieLastPageLoaded: Bool = false
     
+    public var upcomingMovies: [UpcomingMovie] = []
+    
     public init() {
       
     }
@@ -26,6 +28,7 @@ public struct HomeFeature: ReducerProtocol {
   public enum Action: Equatable {
     case fetchNewMovies(currentPage: Int)
     case newMoviesResponse(TaskResult<NowPlayingMoviesModel>)
+    case upcomingMoviesResponse(TaskResult<UpcomingMovie>)
   }
   
   public func reduce(into state: inout State, action: Action) -> Effect<Action, Never> {
@@ -34,6 +37,7 @@ public struct HomeFeature: ReducerProtocol {
       if !state.nowMovieLastPageLoaded {
         return .task {
           await .newMoviesResponse(TaskResult { try await movieService.fetchNowPlayingMovies(currentPage) })
+          
         }
       } else {
         return .none
@@ -51,6 +55,11 @@ public struct HomeFeature: ReducerProtocol {
       return .none
     case let .newMoviesResponse(.failure(error)):
       print(error)
+      return .none
+    case let .upcomingMoviesResponse(.success(movie)):
+      
+      return .none
+    case .upcomingMoviesResponse(.failure):
       return .none
     }
   }
