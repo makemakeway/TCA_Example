@@ -14,9 +14,9 @@ public struct HomeFeature: ReducerProtocol {
   
   public init() {}
   public struct State: Equatable {
-    public var newMovies: [NewMoviesModel] = []
-    public var newMoviePage: Int = 1
-    public var newMovieLastPageLoaded: Bool = false
+    public var nowMovies: [NowPlayingMoviesModel] = []
+    public var nowMoviePage: Int = 1
+    public var nowMovieLastPageLoaded: Bool = false
     
     public init() {
       
@@ -25,28 +25,28 @@ public struct HomeFeature: ReducerProtocol {
   
   public enum Action: Equatable {
     case fetchNewMovies(currentPage: Int)
-    case newMoviesResponse(TaskResult<NewMoviesModel>)
+    case newMoviesResponse(TaskResult<NowPlayingMoviesModel>)
   }
   
   public func reduce(into state: inout State, action: Action) -> Effect<Action, Never> {
     switch action {
     case .fetchNewMovies(let currentPage):
-      if !state.newMovieLastPageLoaded {
+      if !state.nowMovieLastPageLoaded {
         return .task {
-          await .newMoviesResponse(TaskResult { try await movieService.fetchNewMovies(currentPage) })
+          await .newMoviesResponse(TaskResult { try await movieService.fetchNowPlayingMovies(currentPage) })
         }
       } else {
         return .none
       }
     case let .newMoviesResponse(.success(movies)):
-      var currentMovies = state.newMovies
-      if state.newMoviePage == movies.totalPages {
-        state.newMovieLastPageLoaded = true
+      var currentMovies = state.nowMovies
+      if state.nowMoviePage == movies.totalPages {
+        state.nowMovieLastPageLoaded = true
       }
       if !currentMovies.contains(movies) {
         currentMovies.append(movies)
-        state.newMoviePage = (movies.page ?? 1) + 1
-        state.newMovies = currentMovies
+        state.nowMoviePage = (movies.page ?? 1) + 1
+        state.nowMovies = currentMovies
       }
       return .none
     case let .newMoviesResponse(.failure(error)):

@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct NewMoviesModel: Codable,Equatable {
+public struct NowPlayingMoviesModel: Codable,Equatable {
   public var dates: MoviesDates?
   public var page: Int?
   public var results: [MovieModel]?
@@ -20,10 +20,10 @@ public struct NewMoviesModel: Codable,Equatable {
   }
 }
 
-extension NewMoviesModel {
+extension NowPlayingMoviesModel {
   init(data: Data) throws {
     let decoder = JSONDecoder()
-    self = try decoder.decode(NewMoviesModel.self, from: data)
+    self = try decoder.decode(NowPlayingMoviesModel.self, from: data)
   }
 }
 

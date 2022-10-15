@@ -43,7 +43,6 @@ public struct MovieCardView: View {
       
       Text(movie.title ?? "")
         .font(.fontMaker(weight: .bold, size: 14))
-        .foregroundColor(.black)
         .padding([.bottom, .horizontal], 10)
     }
     .frame(maxWidth: 150)

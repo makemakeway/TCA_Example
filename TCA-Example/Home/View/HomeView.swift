@@ -23,12 +23,13 @@ public struct HomeView: View {
   public init(store: StoreOf<HomeFeature>) {
     self.viewStore = ViewStore(store)
     self.store = store
+//    UIView.appearance().backgroundColor = .black
   }
   
   @ViewBuilder
   private func horizontalCardSection(
     title: String,
-    movies: [NewMoviesModel],
+    movies: [NowPlayingMoviesModel],
     fetchAction: HomeFeature.Action
   ) -> some View {
     Section {
@@ -43,12 +44,12 @@ public struct HomeView: View {
         
         ScrollView(.horizontal, showsIndicators: false) {
           LazyHStack(spacing: 10) {
-            ForEach(viewStore.newMovies, id: \.page) { movies in
+            ForEach(viewStore.nowMovies, id: \.page) { movies in
               ForEach(movies.results ?? [], id: \.id) { movie in
                 MovieCardView(movie: movie)
               }
             }
-            if !viewStore.newMovieLastPageLoaded {
+            if !viewStore.nowMovieLastPageLoaded {
               ProgressView()
                 .task {
                   viewStore.send(fetchAction)
@@ -70,18 +71,17 @@ public struct HomeView: View {
             ForEach(data, id: \.self) { _ in
               Color.mint
             }
-            
           }
           .tabViewStyle(.page)
         }
         .frame(height: Constants.height * 0.3)
         
-        
         horizontalCardSection(
           title: "현재 상영중",
-          movies: viewStore.newMovies,
-          fetchAction: .fetchNewMovies(currentPage: viewStore.newMoviePage)
+          movies: viewStore.nowMovies,
+          fetchAction: .fetchNewMovies(currentPage: viewStore.nowMoviePage)
         )
+        .padding(.top, 10)
         
         Section {
           
