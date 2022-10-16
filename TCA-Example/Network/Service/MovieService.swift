@@ -15,11 +15,13 @@ public enum MovieError: String, Error {
 }
 
 public struct MovieService {
-  public typealias NowPlayingMoviesResponse = (Int) async throws -> NowPlayingMoviesModel
-  public typealias LatestMoviesResponse = (Int) async throws -> UpcomingMovie
+  public typealias NowPlayingMoviesResponse = (Int) async throws -> CommonMoviesModel
+  public typealias UpcomingMoviesResponse = (Int) async throws -> UpcomingMovie
+  public typealias TopRatedMoivesResponse = (Int) async throws -> TopRatedMoviesModel
   
   public var fetchNowPlayingMovies: NowPlayingMoviesResponse
-  public var fetchLatestMovies: LatestMoviesResponse
+  public var fetchUpcomingMovies: UpcomingMoviesResponse
+  public var fetchTopRatedMovies: TopRatedMoivesResponse
   
   static func request<T: Decodable>(
     _ object: T.Type,
@@ -34,10 +36,13 @@ public struct MovieService {
 extension MovieService {
   static let live = Self(
     fetchNowPlayingMovies: { page in
-      return try await MovieService.request(NowPlayingMoviesModel.self, request: MovieEndPoint.fetchNowPlaying(page: page))
+      return try await MovieService.request(CommonMoviesModel.self, request: MovieEndPoint.fetchNowPlaying(page: page))
     },
-    fetchLatestMovies: { page in
+    fetchUpcomingMovies: { page in
       return try await MovieService.request(UpcomingMovie.self, request: MovieEndPoint.fetchUpcomingMovies(page: page))
+    },
+    fetchTopRatedMovies: { page in
+      return try await MovieService.request(TopRatedMoviesModel.self, request: MovieEndPoint.fetchTopRatedMovies(page: page))
     }
   )
 }

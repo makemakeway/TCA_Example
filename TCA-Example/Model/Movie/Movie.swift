@@ -7,11 +7,12 @@
 
 import Foundation
 
-public struct NowPlayingMoviesModel: Codable,Equatable {
+public struct CommonMoviesModel: Codable,Equatable, Identifiable {
   public var dates: MoviesDates?
   public var page: Int?
   public var results: [MovieModel]?
   public var totalPages, totalResults: Int?
+  public var id = UUID().uuidString
   
   enum CodingKeys: String, CodingKey {
     case dates, page, results
@@ -20,10 +21,10 @@ public struct NowPlayingMoviesModel: Codable,Equatable {
   }
 }
 
-extension NowPlayingMoviesModel {
+extension CommonMoviesModel {
   init(data: Data) throws {
     let decoder = JSONDecoder()
-    self = try decoder.decode(NowPlayingMoviesModel.self, from: data)
+    self = try decoder.decode(CommonMoviesModel.self, from: data)
   }
 }
 

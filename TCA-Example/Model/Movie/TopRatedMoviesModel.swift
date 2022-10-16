@@ -1,52 +1,41 @@
 // This file was generated from JSON Schema using quicktype, do not modify it directly.
 // To parse the JSON, add this file to your project and do:
 //
-//   let upcommingMovie = try? newJSONDecoder().decode(UpcommingMovie.self, from: jsonData)
+//   let topRatedMoviesModel = try? newJSONDecoder().decode(TopRatedMoviesModel.self, from: jsonData)
 
 import Foundation
 
-// MARK: - UpcommingMovie
-public struct UpcomingMovie: Codable, Equatable, Identifiable {
+// MARK: - TopRatedMoviesModel
+public struct TopRatedMoviesModel: Codable, Identifiable, Equatable {
   public let page: Int
-  public let results: [Result]
-  public let dates: Dates
-  public let totalPages, totalResults: Int
+  public let results: [TopRatedMovieResult]
+  public let totalResults, totalPages: Int
   public let id = UUID().uuidString
   
   enum CodingKeys: String, CodingKey {
-    case page, results, dates
-    case totalPages = "total_pages"
+    case page, results
     case totalResults = "total_results"
+    case totalPages = "total_pages"
   }
   
-  public init(page: Int, results: [Result], dates: Dates, totalPages: Int, totalResults: Int) {
+  public init(page: Int, results: [TopRatedMovieResult], totalResults: Int, totalPages: Int) {
     self.page = page
     self.results = results
-    self.dates = dates
-    self.totalPages = totalPages
     self.totalResults = totalResults
-  }
-}
-
-// MARK: - Dates
-public struct Dates: Codable, Equatable {
-  public let maximum, minimum: String
-  
-  public init(maximum: String, minimum: String) {
-    self.maximum = maximum
-    self.minimum = minimum
+    self.totalPages = totalPages
   }
 }
 
 // MARK: - Result
-public struct Result: Codable, Equatable {
+public struct TopRatedMovieResult: Codable, Equatable {
   public let posterPath: String
   public let adult: Bool
   public let overview, releaseDate: String
   public let genreIDS: [Int]
   public let id: Int
-  public let originalTitle, originalLanguage, title: String
-  public let backdropPath: String?
+  public let originalTitle: String
+  public let originalLanguage: String
+  public let title, backdropPath: String
   public let popularity: Double
   public let voteCount: Int
   public let video: Bool
@@ -68,7 +57,7 @@ public struct Result: Codable, Equatable {
     case voteAverage = "vote_average"
   }
   
-  public init(posterPath: String, adult: Bool, overview: String, releaseDate: String, genreIDS: [Int], id: Int, originalTitle: String, originalLanguage: String, title: String, backdropPath: String?, popularity: Double, voteCount: Int, video: Bool, voteAverage: Double) {
+  public init(posterPath: String, adult: Bool, overview: String, releaseDate: String, genreIDS: [Int], id: Int, originalTitle: String, originalLanguage: String, title: String, backdropPath: String, popularity: Double, voteCount: Int, video: Bool, voteAverage: Double) {
     self.posterPath = posterPath
     self.adult = adult
     self.overview = overview

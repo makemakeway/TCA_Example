@@ -23,13 +23,12 @@ public struct HomeView: View {
   public init(store: StoreOf<HomeFeature>) {
     self.viewStore = ViewStore(store)
     self.store = store
-//    UIView.appearance().backgroundColor = .black
   }
   
   @ViewBuilder
   private func horizontalCardSection(
     title: String,
-    movies: [NowPlayingMoviesModel],
+    movies: [CommonMoviesModel],
     fetchAction: HomeFeature.Action
   ) -> some View {
     Section {
@@ -67,12 +66,20 @@ public struct HomeView: View {
       ScrollView {
         Section {
           TabView(selection: $currentIndex) {
-            let data = [1, 2, 3, 4, 5]
-            ForEach(data, id: \.self) { _ in
-              Color.mint
+            if viewStore.topRatedMovies.isEmpty {
+              Color(uiColor: .darkGray)
+            } else {
+              ForEach(viewStore.topRatedMovies, id: \.id) { movies in
+                ForEach(movies.results, id: \.id) { movie in
+                  MovieCardImageView(path: movie.posterPath, contentMode: .fill)
+                }
+              }
             }
           }
           .tabViewStyle(.page)
+          .task {
+            viewStore.send(.fetchTopRatedMovies(currentPage: 1))
+          }
         }
         .frame(height: Constants.height * 0.3)
         
