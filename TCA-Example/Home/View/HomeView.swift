@@ -66,10 +66,10 @@ public struct HomeView: View {
       ScrollView {
         Section {
           TabView(selection: $currentIndex) {
-            if viewStore.topRatedMovies.isEmpty {
+            if viewStore.upcomingMovies.isEmpty {
               Color(uiColor: .darkGray)
             } else {
-              ForEach(viewStore.topRatedMovies, id: \.id) { movies in
+              ForEach(viewStore.upcomingMovies, id: \.id) { movies in
                 ForEach(movies.results, id: \.id) { movie in
                   MovieCardImageView(path: movie.posterPath, contentMode: .fill)
                 }
@@ -78,7 +78,7 @@ public struct HomeView: View {
           }
           .tabViewStyle(.page)
           .task {
-            viewStore.send(.fetchTopRatedMovies(currentPage: 1))
+            viewStore.send(.fetchUpcommingMovies(currentPage: 1))
           }
         }
         .frame(height: Constants.height * 0.3)
@@ -88,13 +88,14 @@ public struct HomeView: View {
           movies: viewStore.nowMovies,
           fetchAction: .fetchNewMovies(currentPage: viewStore.nowMoviePage)
         )
-        .padding(.top, 10)
+        .padding(.vertical, 10)
         
-//        horizontalCardSection(
-//          title: <#T##String#>,
-//          movies: <#T##[CommonMoviesModel]#>,
-//          fetchAction: <#T##HomeFeature.Action#>
-//        )
+        horizontalCardSection(
+          title: "평점 좋은 영화",
+          movies: viewStore.topRatedMovies,
+          fetchAction: .fetchTopRatedMovies(currentPage: viewStore.topRatedPage)
+        )
+        .padding(.vertical, 10)
       }
       .navigationBarTitleDisplayMode(.inline)
       .toolbar {

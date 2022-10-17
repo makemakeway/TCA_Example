@@ -22,6 +22,8 @@ public struct HomeFeature: ReducerProtocol {
     public var upcomingPage: Int = 1
     
     public var topRatedMovies: [TopRatedMoviesModel] = []
+    public var topRatedPage: Int = 1
+    public var topRateMovieLastPageLoaded: Bool = false
     
     public init() {
       
@@ -52,14 +54,26 @@ public struct HomeFeature: ReducerProtocol {
         await .upcomingMoviesResponse(TaskResult { try await movieService.fetchUpcomingMovies(page) })
       }
     case .fetchTopRatedMovies(currentPage: let page):
-      return .task {
-        await .topRatedMoviesResponse(TaskResult { try await movieService.fetchTopRatedMovies(page) })
+      if !state.topRateMovieLastPageLoaded {
+        return .task {
+          await .topRatedMoviesResponse(TaskResult { try await movieService.fetchTopRatedMovies(page) })
+        }
+      } else {
+        return .none
       }
     case .topRatedMoviesResponse(.failure(let error)):
       print("DEBUG: TOP RATED MOVIE FETCH FAILED... \(error.localizedDescription)")
       return .none
     case .topRatedMoviesResponse(.success(let movies)):
-      state.topRatedMovies = [movies]
+      var currentMovies = state.topRatedMovies
+      if state.topRatedPage == movies.totalPages {
+        state.topRateMovieLastPageLoaded = true
+      }
+      if !currentMovies.contains(movies) {
+        currentMovies.append(movies)
+        state.topRatedPage = (movies.page) + 1
+        state.topRatedMovies = currentMovies
+      }
       return .none
     case let .newMoviesResponse(.success(movies)):
       var currentMovies = state.nowMovies
@@ -68,7 +82,7 @@ public struct HomeFeature: ReducerProtocol {
       }
       if !currentMovies.contains(movies) {
         currentMovies.append(movies)
-        state.nowMoviePage = (movies.page ?? 1) + 1
+        state.nowMoviePage = (movies.page) + 1
         state.nowMovies = currentMovies
       }
       return .none
