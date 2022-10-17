@@ -51,7 +51,7 @@ public enum MovieEndPoint: URLRequestConvertible {
     case let .fetchNowPlaying(page: page):
       return ["page":page, "language":"ko-KR"] // LANGUAGE
     case let .fetchUpcomingMovies(page: page):
-      return ["page":page, "language":"ko-KR", "region":"KOR"]
+      return ["page":page, "language":"ko-KR"]
     case let .fetchTopRatedMovies(page: page):
       return ["page":page, "language":"ko-KR"]
     default:
@@ -61,7 +61,7 @@ public enum MovieEndPoint: URLRequestConvertible {
   
   private var encoding: ParameterEncoding {
     switch self {
-    case .fetchNowPlaying, .fetchMovieDetail, .searchMovie, .fetchTopRatedMovies:
+    case .fetchNowPlaying, .fetchMovieDetail, .searchMovie, .fetchTopRatedMovies, .fetchUpcomingMovies:
       return URLEncoding.queryString
     default:
       return URLEncoding.default

@@ -59,7 +59,6 @@ public struct HomeFeature: ReducerProtocol {
       print("DEBUG: TOP RATED MOVIE FETCH FAILED... \(error.localizedDescription)")
       return .none
     case .topRatedMoviesResponse(.success(let movies)):
-      print("DEBUG: \(movies)")
       state.topRatedMovies = [movies]
       return .none
     case let .newMoviesResponse(.success(movies)):

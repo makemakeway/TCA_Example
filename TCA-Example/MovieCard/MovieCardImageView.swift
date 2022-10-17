@@ -24,7 +24,8 @@ public struct MovieCardImageView: View {
       AsyncImage(url: imagePath) { image in
         image
           .resizable()
-          .aspectRatio(0.75, contentMode: contentMode)
+          .aspectRatio(contentMode: contentMode)
+          .imageScale(.large)
           .frame(width: proxy.size.width, height: proxy.size.height, alignment: .center)
           .cornerRadius(cornerRadius)
           

@@ -28,7 +28,7 @@ public struct HomeView: View {
   @ViewBuilder
   private func horizontalCardSection(
     title: String,
-    movies: [CommonMoviesModel],
+    movies: [any MovieDataImp],
     fetchAction: HomeFeature.Action
   ) -> some View {
     Section {
@@ -43,8 +43,8 @@ public struct HomeView: View {
         
         ScrollView(.horizontal, showsIndicators: false) {
           LazyHStack(spacing: 10) {
-            ForEach(viewStore.nowMovies, id: \.page) { movies in
-              ForEach(movies.results ?? [], id: \.id) { movie in
+            ForEach(movies, id: \.id) { movies in
+              ForEach(movies.results, id: \.id) { movie in
                 MovieCardView(movie: movie)
               }
             }
@@ -90,9 +90,11 @@ public struct HomeView: View {
         )
         .padding(.top, 10)
         
-        Section {
-          
-        }
+//        horizontalCardSection(
+//          title: <#T##String#>,
+//          movies: <#T##[CommonMoviesModel]#>,
+//          fetchAction: <#T##HomeFeature.Action#>
+//        )
       }
       .navigationBarTitleDisplayMode(.inline)
       .toolbar {

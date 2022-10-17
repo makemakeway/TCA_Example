@@ -6,12 +6,12 @@
 import Foundation
 
 // MARK: - UpcommingMovie
-public struct UpcomingMovie: Codable, Equatable, Identifiable {
-  public let page: Int
-  public let results: [Result]
-  public let dates: Dates
-  public let totalPages, totalResults: Int
-  public let id = UUID().uuidString
+public struct UpcomingMovie: Codable, Equatable, MovieDataImp {
+  public var page: Int
+  public var results: [Result]
+  public var dates: Dates
+  public var totalPages, totalResults: Int
+  public var id = UUID().uuidString
   
   enum CodingKeys: String, CodingKey {
     case page, results, dates

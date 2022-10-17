@@ -11,15 +11,15 @@ import SwiftUI
 // MARK: View
 
 public struct MovieCardView: View {
-  private var movie: MovieModel
+  private var movie: Result
   private let cardCornerRadius: CGFloat = 8
   
-  public init(movie: MovieModel) {
+  public init(movie: Result) {
     self.movie = movie
   }
   
   public var body: some View {
-    let imagePath = Constants.posterImageURL.appendingPathComponent(movie.posterPath ?? "")
+    let imagePath = Constants.posterImageURL.appendingPathComponent(movie.posterPath)
     VStack(alignment: .leading, spacing: 8) {
       VStack(spacing: 0) {
         GeometryReader { proxy in
@@ -46,15 +46,5 @@ public struct MovieCardView: View {
         .padding([.bottom, .horizontal], 10)
     }
     .frame(maxWidth: 150)
-  }
-}
-
-// MARK: Preview
-
-struct MovieCardView_Previews: PreviewProvider {
-  
-  static var previews: some View {
-    MovieCardView(movie: MovieModel(originalTitle: "test", title: "zz"))
-      .previewLayout(.sizeThatFits)
   }
 }
