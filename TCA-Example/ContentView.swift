@@ -21,6 +21,7 @@ struct ContentView: View {
             )
           )
         }
+        .navigationViewStyle(.stack)
         .tabItem {
           Label("홈", systemImage: "house")
         }
@@ -31,6 +32,7 @@ struct ContentView: View {
             reducer: SearchFeature())
           )
         }
+        .navigationViewStyle(.stack)
         .tabItem {
           Label("검색", systemImage: "magnifyingglass")
         }

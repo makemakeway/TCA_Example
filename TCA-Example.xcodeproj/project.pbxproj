@@ -17,6 +17,8 @@
 		103C620728FCDA8D00A8A82B /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 103C620628FCDA8D00A8A82B /* SearchView.swift */; };
 		103C620928FCDAB600A8A82B /* SearchTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 103C620828FCDAB600A8A82B /* SearchTextField.swift */; };
 		103C620B28FCDADB00A8A82B /* SearchFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = 103C620A28FCDADB00A8A82B /* SearchFeature.swift */; };
+		103C621328FE19CC00A8A82B /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 103C621228FE19CC00A8A82B /* DetailView.swift */; };
+		103C621528FE1A0A00A8A82B /* DetailFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = 103C621428FE1A0A00A8A82B /* DetailFeature.swift */; };
 		1052833C28C0DA81001CA6A4 /* TCA_ExampleApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1052833B28C0DA81001CA6A4 /* TCA_ExampleApp.swift */; };
 		1052833E28C0DA81001CA6A4 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1052833D28C0DA81001CA6A4 /* ContentView.swift */; };
 		1052834028C0DA81001CA6A4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1052833F28C0DA81001CA6A4 /* Assets.xcassets */; };
@@ -65,6 +67,8 @@
 		103C620628FCDA8D00A8A82B /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
 		103C620828FCDAB600A8A82B /* SearchTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTextField.swift; sourceTree = "<group>"; };
 		103C620A28FCDADB00A8A82B /* SearchFeature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchFeature.swift; sourceTree = "<group>"; };
+		103C621228FE19CC00A8A82B /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
+		103C621428FE1A0A00A8A82B /* DetailFeature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailFeature.swift; sourceTree = "<group>"; };
 		1052833828C0DA81001CA6A4 /* TCA-Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "TCA-Example.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		1052833B28C0DA81001CA6A4 /* TCA_ExampleApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TCA_ExampleApp.swift; sourceTree = "<group>"; };
 		1052833D28C0DA81001CA6A4 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -188,6 +192,7 @@
 		103C620C28FCDF0700A8A82B /* Tab */ = {
 			isa = PBXGroup;
 			children = (
+				103C620E28FE199300A8A82B /* View */,
 				103C620D28FCDF0D00A8A82B /* Core */,
 			);
 			path = Tab;
@@ -198,6 +203,38 @@
 			children = (
 			);
 			path = Core;
+			sourceTree = "<group>";
+		};
+		103C620E28FE199300A8A82B /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		103C620F28FE19BA00A8A82B /* Detail */ = {
+			isa = PBXGroup;
+			children = (
+				103C621128FE19C000A8A82B /* View */,
+				103C621028FE19BD00A8A82B /* Core */,
+			);
+			path = Detail;
+			sourceTree = "<group>";
+		};
+		103C621028FE19BD00A8A82B /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				103C621428FE1A0A00A8A82B /* DetailFeature.swift */,
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
+		103C621128FE19C000A8A82B /* View */ = {
+			isa = PBXGroup;
+			children = (
+				103C621228FE19CC00A8A82B /* DetailView.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 		1052832F28C0DA81001CA6A4 = {
@@ -224,6 +261,7 @@
 		1052833A28C0DA81001CA6A4 /* TCA-Example */ = {
 			isa = PBXGroup;
 			children = (
+				103C620F28FE19BA00A8A82B /* Detail */,
 				103C620C28FCDF0700A8A82B /* Tab */,
 				103C620228FCD71400A8A82B /* Search */,
 				103C61FF28FCCD7300A8A82B /* Protocols */,
@@ -480,6 +518,8 @@
 				103C61FC28FAA8E400A8A82B /* MovieCardImageView.swift in Sources */,
 				106543CC28F638C2008964FF /* Movie.swift in Sources */,
 				1052833C28C0DA81001CA6A4 /* TCA_ExampleApp.swift in Sources */,
+				103C621328FE19CC00A8A82B /* DetailView.swift in Sources */,
+				103C621528FE1A0A00A8A82B /* DetailFeature.swift in Sources */,
 				106543A828F4E3A4008964FF /* MovieEndPoint.swift in Sources */,
 				103C61F828FA9D1400A8A82B /* UpcomingMovie.swift in Sources */,
 				103C620128FCCD8E00A8A82B /* MovieDataImp.swift in Sources */,
