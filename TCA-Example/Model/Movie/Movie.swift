@@ -8,7 +8,7 @@
 import Foundation
 
 public struct CommonMoviesModel: Codable, Equatable, MovieDataImp {
-  public var dates: MoviesDates
+  public var dates: MoviesDates?
   public var page: Int
   public var results: [Result]
   public var totalPages, totalResults: Int

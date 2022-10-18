@@ -16,6 +16,7 @@ public enum MovieEndPoint: URLRequestConvertible {
   case fetchMovieGenreList
   case fetchUpcomingMovies(page: Int)
   case fetchTopRatedMovies(page: Int)
+  case fetchPopularMovies(page: Int)
   
   private var method: HTTPMethod {
     switch self {
@@ -39,6 +40,8 @@ public enum MovieEndPoint: URLRequestConvertible {
       return baseURL + "/movie/upcoming"
     case .fetchTopRatedMovies:
       return baseURL + "/movie/top_rated"
+    case .fetchPopularMovies:
+      return baseURL + "/movie/popular"
     }
   }
   
@@ -54,6 +57,8 @@ public enum MovieEndPoint: URLRequestConvertible {
       return ["page":page, "language":"ko-KR"]
     case let .fetchTopRatedMovies(page: page):
       return ["page":page, "language":"ko-KR"]
+    case let .fetchPopularMovies(page: page):
+      return ["page":page, "language":"ko-KR", "region":"KR"]
     default:
       return ["language":"ko-KR"]
     }
@@ -61,7 +66,7 @@ public enum MovieEndPoint: URLRequestConvertible {
   
   private var encoding: ParameterEncoding {
     switch self {
-    case .fetchNowPlaying, .fetchMovieDetail, .searchMovie, .fetchTopRatedMovies, .fetchUpcomingMovies:
+    case .fetchNowPlaying, .fetchMovieDetail, .searchMovie, .fetchTopRatedMovies, .fetchUpcomingMovies, .fetchPopularMovies:
       return URLEncoding.queryString
     default:
       return URLEncoding.default
@@ -93,7 +98,7 @@ public struct MovieAPIConstants {
   }
   
   // MARK: Headers
-  public static var headers: [String : String]? {
+  public static var headers: [String : String] {
     return ["Content-type": "application/json"]
   }
 }

@@ -18,10 +18,12 @@ public struct MovieService {
   public typealias NowPlayingMoviesResponse = (Int) async throws -> CommonMoviesModel
   public typealias UpcomingMoviesResponse = (Int) async throws -> UpcomingMovie
   public typealias TopRatedMoivesResponse = (Int) async throws -> TopRatedMoviesModel
+  public typealias PopularMoviesResponse = (Int) async throws -> CommonMoviesModel
   
   public var fetchNowPlayingMovies: NowPlayingMoviesResponse
   public var fetchUpcomingMovies: UpcomingMoviesResponse
   public var fetchTopRatedMovies: TopRatedMoivesResponse
+  public var fetchPopularMovies: PopularMoviesResponse
   
   static func request<T: Decodable>(
     _ object: T.Type,
@@ -43,6 +45,9 @@ extension MovieService {
     },
     fetchTopRatedMovies: { page in
       return try await MovieService.request(TopRatedMoviesModel.self, request: MovieEndPoint.fetchTopRatedMovies(page: page))
+    },
+    fetchPopularMovies: { page in
+      return try await MovieService.request(CommonMoviesModel.self, request: MovieEndPoint.fetchPopularMovies(page: page))
     }
   )
 }

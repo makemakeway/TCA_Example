@@ -61,6 +61,14 @@ public struct HomeView: View {
     }
   }
   
+  @ViewBuilder
+  private func rowsCardSection(title: String, movies: [any MovieDataImp], fetchAction: HomeFeature.Action) -> some View {
+    TabView {
+      
+    }
+    .tabViewStyle(.page(indexDisplayMode: .never))
+  }
+  
   public var body: some View {
     WithViewStore(self.store) { viewStore in
       ScrollView {
@@ -96,11 +104,17 @@ public struct HomeView: View {
           fetchAction: .fetchTopRatedMovies(currentPage: viewStore.topRatedPage)
         )
         .padding(.vertical, 10)
+        
+        horizontalCardSection(
+          title: "요즘 뜨는 영화",
+          movies: viewStore.popularMovies,
+          fetchAction: .fetchPopularMovies(currentPage: viewStore.popularMoviesPage)
+        )
       }
       .navigationBarTitleDisplayMode(.inline)
       .toolbar {
         ToolbarItem(placement: .principal) {
-          Text("Movie Database")
+          Text("Movie DB")
             .font(.fontMaker(weight: .bold, size: 18))
         }
       }

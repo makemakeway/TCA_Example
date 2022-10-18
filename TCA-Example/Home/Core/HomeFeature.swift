@@ -25,6 +25,10 @@ public struct HomeFeature: ReducerProtocol {
     public var topRatedPage: Int = 1
     public var topRateMovieLastPageLoaded: Bool = false
     
+    public var popularMovies: [CommonMoviesModel] = []
+    public var popularMoviesPage: Int = 1
+    public var popularMovieLastPageLoaded: Bool = false
+    
     public init() {
       
     }
@@ -34,9 +38,11 @@ public struct HomeFeature: ReducerProtocol {
     case fetchNewMovies(currentPage: Int)
     case fetchTopRatedMovies(currentPage: Int)
     case fetchUpcommingMovies(currentPage: Int)
+    case fetchPopularMovies(currentPage: Int)
     case newMoviesResponse(TaskResult<CommonMoviesModel>)
     case upcomingMoviesResponse(TaskResult<UpcomingMovie>)
     case topRatedMoviesResponse(TaskResult<TopRatedMoviesModel>)
+    case popularMoviesResponse(TaskResult<CommonMoviesModel>)
   }
   
   public func reduce(into state: inout State, action: Action) -> Effect<Action, Never> {
@@ -96,6 +102,20 @@ public struct HomeFeature: ReducerProtocol {
       state.upcomingMovies = current
       return .none
     case .upcomingMoviesResponse(.failure):
+      return .none
+    case let .fetchPopularMovies(page):
+      return .task {
+        await .popularMoviesResponse(TaskResult { try await movieService.fetchPopularMovies(page) })
+      }
+    case let .popularMoviesResponse(.success(movie)):
+      var current = state.popularMovies
+      if !current.contains(movie) {
+        current.append(movie)
+      }
+      state.popularMovies = current
+      return .none
+    case let .popularMoviesResponse(.failure(error)):
+      print("DEBUG: POPULAR MOVIE FETCH FAILED... \(error.localizedDescription)")
       return .none
     }
   }
