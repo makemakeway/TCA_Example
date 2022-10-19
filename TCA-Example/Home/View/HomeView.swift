@@ -14,15 +14,17 @@ public struct HomeView: View {
   
   @ObservedObject
   private var viewStore: ViewStoreOf<HomeFeature>
-  
   private let store: StoreOf<HomeFeature>
   
   @State
   var currentIndex: Int = 0
+  @State
+  var currentPopularPage: Int = 0
   
   public init(store: StoreOf<HomeFeature>) {
     self.viewStore = ViewStore(store)
     self.store = store
+    viewStore.send(.homeInit)
   }
   
   @ViewBuilder
@@ -63,10 +65,30 @@ public struct HomeView: View {
   
   @ViewBuilder
   private func rowsCardSection(title: String, movies: [any MovieDataImp], fetchAction: HomeFeature.Action) -> some View {
-    TabView {
-      
+    if !movies.isEmpty {
+      TabView(selection: $currentPopularPage) {
+        ForEach(movies, id:\.id) { movies in
+          ForEach(movies.results, id:\.id) { result in
+            LazyHStack(spacing: 10) {
+              MovieCardView(movie: result)
+              HStack(spacing: 10) {
+                Text("1")
+                  .font(.fontMaker(weight: .bold, size: 14))
+                VStack(spacing: 8) {
+                  Text("\(result.title)")
+                    .font(.fontMaker(weight: .bold, size: 14))
+                  Text("\(result.voteAverage)")
+                }
+              }
+              Spacer()
+            }
+          }
+        }
+      }
+      .tabViewStyle(.page(indexDisplayMode: .never))
+    } else {
+      EmptyView()
     }
-    .tabViewStyle(.page(indexDisplayMode: .never))
   }
   
   public var body: some View {
@@ -105,7 +127,7 @@ public struct HomeView: View {
         )
         .padding(.vertical, 10)
         
-        horizontalCardSection(
+        rowsCardSection(
           title: "요즘 뜨는 영화",
           movies: viewStore.popularMovies,
           fetchAction: .fetchPopularMovies(currentPage: viewStore.popularMoviesPage)

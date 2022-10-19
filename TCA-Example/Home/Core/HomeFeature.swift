@@ -29,6 +29,8 @@ public struct HomeFeature: ReducerProtocol {
     public var popularMoviesPage: Int = 1
     public var popularMovieLastPageLoaded: Bool = false
     
+    public var initailized: Bool = false
+    
     public init() {
       
     }
@@ -43,26 +45,40 @@ public struct HomeFeature: ReducerProtocol {
     case upcomingMoviesResponse(TaskResult<UpcomingMovie>)
     case topRatedMoviesResponse(TaskResult<TopRatedMoviesModel>)
     case popularMoviesResponse(TaskResult<CommonMoviesModel>)
+    case homeInit
   }
+  
   
   public func reduce(into state: inout State, action: Action) -> Effect<Action, Never> {
     switch action {
+    case .homeInit:
+      if state.initailized {
+        return .none
+      } else {
+        return .run { send in
+          await send(.fetchTopRatedMovies(currentPage: 1))
+          await send(.fetchNewMovies(currentPage: 1))
+          await send(.fetchPopularMovies(currentPage: 1))
+          await send(.fetchUpcommingMovies(currentPage: 1))
+          state.initailized = true
+        }
+      }
     case .fetchNewMovies(let currentPage):
       if !state.nowMovieLastPageLoaded {
-        return .task {
-          await .newMoviesResponse(TaskResult { try await movieService.fetchNowPlayingMovies(currentPage) })
+        return .run { send in
+          await send(.newMoviesResponse(TaskResult { try await movieService.fetchNowPlayingMovies(currentPage) }))
         }
       } else {
         return .none
       }
     case .fetchUpcommingMovies(let page):
-      return .task(priority: .userInitiated) {
-        await .upcomingMoviesResponse(TaskResult { try await movieService.fetchUpcomingMovies(page) })
+      return .run(priority: .userInitiated) { send in
+        await send(.upcomingMoviesResponse(TaskResult { try await movieService.fetchUpcomingMovies(page) }))
       }
     case .fetchTopRatedMovies(currentPage: let page):
       if !state.topRateMovieLastPageLoaded {
-        return .task {
-          await .topRatedMoviesResponse(TaskResult { try await movieService.fetchTopRatedMovies(page) })
+        return .run { send in
+          await send(.topRatedMoviesResponse(TaskResult { try await movieService.fetchTopRatedMovies(page) }))
         }
       } else {
         return .none
@@ -96,9 +112,10 @@ public struct HomeFeature: ReducerProtocol {
       print(error)
       return .none
     case let .upcomingMoviesResponse(.success(movie)):
-      print("DEBUG: \(movie)")
       var current = state.upcomingMovies
-      current.append(movie)
+      if !current.contains(movie) {
+        current.append(movie)
+      }
       state.upcomingMovies = current
       return .none
     case .upcomingMoviesResponse(.failure):
@@ -118,5 +135,6 @@ public struct HomeFeature: ReducerProtocol {
       print("DEBUG: POPULAR MOVIE FETCH FAILED... \(error.localizedDescription)")
       return .none
     }
+      
   }
 }
