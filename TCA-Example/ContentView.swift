@@ -17,7 +17,7 @@ struct ContentView: View {
           HomeView(
             store: .init(
               initialState: .init(),
-              reducer: HomeFeature()
+              reducer: HomeFeature()._printChanges(.actionLabels)
             )
           )
         }

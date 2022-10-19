@@ -46,6 +46,7 @@ public struct HomeFeature: ReducerProtocol {
     case topRatedMoviesResponse(TaskResult<TopRatedMoviesModel>)
     case popularMoviesResponse(TaskResult<CommonMoviesModel>)
     case homeInit
+    case endInit
   }
   
   
@@ -60,9 +61,12 @@ public struct HomeFeature: ReducerProtocol {
           await send(.fetchNewMovies(currentPage: 1))
           await send(.fetchPopularMovies(currentPage: 1))
           await send(.fetchUpcommingMovies(currentPage: 1))
-          state.initailized = true
+          await send(.endInit)
         }
       }
+    case .endInit:
+      state.initailized = true
+      return .none
     case .fetchNewMovies(let currentPage):
       if !state.nowMovieLastPageLoaded {
         return .run { send in

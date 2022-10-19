@@ -50,7 +50,7 @@ public struct HomeView: View {
                 MovieCardView(movie: movie)
               }
             }
-            if !viewStore.nowMovieLastPageLoaded {
+            if !viewStore.nowMovieLastPageLoaded && !movies.isEmpty {
               ProgressView()
                 .task {
                   viewStore.send(fetchAction)
@@ -107,9 +107,6 @@ public struct HomeView: View {
             }
           }
           .tabViewStyle(.page)
-          .task {
-            viewStore.send(.fetchUpcommingMovies(currentPage: 1))
-          }
         }
         .frame(height: Constants.height * 0.3)
         
