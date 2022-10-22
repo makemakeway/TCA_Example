@@ -39,7 +39,7 @@ public struct Dates: Codable, Equatable {
 }
 
 // MARK: - Result
-public struct Result: Codable, Equatable {
+public struct Result: Codable, Equatable, Hashable {
   public let posterPath: String
   public let adult: Bool
   public let overview, releaseDate: String

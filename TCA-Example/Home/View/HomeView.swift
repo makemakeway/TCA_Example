@@ -64,12 +64,15 @@ public struct HomeView: View {
   }
   
   @ViewBuilder
-  private func rowsCardSection(title: String, movies: [any MovieDataImp], fetchAction: HomeFeature.Action) -> some View {
+  private func rowsCardSection(title: String, movies: [any MovieDataImp]) -> some View {
+    let columns = makeColumns(movies: movies)
+    
     if !movies.isEmpty {
       TabView(selection: $currentPopularPage) {
-        ForEach(movies, id:\.id) { movies in
-          ForEach(movies.results, id:\.id) { result in
-            LazyHStack(spacing: 10) {
+        ForEach(movies, id: \.id) { movies in
+          ForEach(0..<5) { index in
+            HStack(spacing: 10) {
+              let result = movies.results[index]
               MovieCardView(movie: result)
               HStack(spacing: 10) {
                 Text("1")
@@ -89,6 +92,20 @@ public struct HomeView: View {
     } else {
       EmptyView()
     }
+  }
+  
+  private func makeColumns(movies: [any MovieDataImp]) -> [[any MovieDataImp]] {
+    var allColumns: [[any MovieDataImp]] = []
+    var currentColumn: [any MovieDataImp] = []
+    movies.forEach { movie in
+      if currentColumn.count < 5 {
+        currentColumn.append(movie)
+      } else {
+        allColumns.append(currentColumn)
+        currentColumn.removeAll()
+      }
+    }
+    return allColumns
   }
   
   public var body: some View {
@@ -126,9 +143,10 @@ public struct HomeView: View {
         
         rowsCardSection(
           title: "요즘 뜨는 영화",
-          movies: viewStore.popularMovies,
-          fetchAction: .fetchPopularMovies(currentPage: viewStore.popularMoviesPage)
+          movies: viewStore.popularMovies
         )
+        
+        rowsCardSection(title: "요즘 뜨는 영화", movies: viewStore.topRatedMovies)
       }
       .navigationBarTitleDisplayMode(.inline)
       .toolbar {
