@@ -25,7 +25,7 @@ public struct MovieCardImageView: View {
     GeometryReader { proxy in
       WebImage(url: imagePath)
         .onSuccess { image, data, cacheType in
-        
+          
         }
         .placeholder {
           MovieImagePlaceholder()

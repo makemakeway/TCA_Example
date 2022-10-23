@@ -65,30 +65,27 @@ public struct HomeView: View {
   
   @ViewBuilder
   private func rowsCardSection(title: String, movies: [any MovieDataImp]) -> some View {
-    let columns = makeColumns(movies: movies)
-    
     if !movies.isEmpty {
-      TabView(selection: $currentPopularPage) {
-        ForEach(movies, id: \.id) { movies in
-          ForEach(0..<5) { index in
+      ForEach(movies, id: \.id) { movies in
+        TabView(selection: $currentPopularPage) {
+          ForEach(movies.results, id: \.id) { movie in
             HStack(spacing: 10) {
-              let result = movies.results[index]
-              MovieCardView(movie: result)
+              MovieCardView(movie: movie)
               HStack(spacing: 10) {
                 Text("1")
                   .font(.fontMaker(weight: .bold, size: 14))
                 VStack(spacing: 8) {
-                  Text("\(result.title)")
+                  Text("\(movie.title)")
                     .font(.fontMaker(weight: .bold, size: 14))
-                  Text("\(result.voteAverage)")
+                  Text("\(movie.voteAverage)")
                 }
               }
               Spacer()
             }
           }
         }
+        .tabViewStyle(.page(indexDisplayMode: .never))
       }
-      .tabViewStyle(.page(indexDisplayMode: .never))
     } else {
       EmptyView()
     }
@@ -104,6 +101,10 @@ public struct HomeView: View {
         allColumns.append(currentColumn)
         currentColumn.removeAll()
       }
+    }
+    if !currentColumn.isEmpty {
+      allColumns.append(currentColumn)
+      currentColumn.removeAll()
     }
     return allColumns
   }
@@ -141,10 +142,7 @@ public struct HomeView: View {
         )
         .padding(.vertical, 10)
         
-        rowsCardSection(
-          title: "요즘 뜨는 영화",
-          movies: viewStore.popularMovies
-        )
+        rowsCardSection(title: "요즘 뜨는 영화", movies: viewStore.popularMovies)
         
         rowsCardSection(title: "요즘 뜨는 영화", movies: viewStore.topRatedMovies)
       }

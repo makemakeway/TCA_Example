@@ -51,6 +51,10 @@ public struct HomeFeature: ReducerProtocol {
   
   
   public func reduce(into state: inout State, action: Action) -> Effect<Action, Never> {
+    func movieFetch(movies: [any MovieDataImp]) {
+      
+    }
+    
     switch action {
     case .homeInit:
       if state.initailized {
