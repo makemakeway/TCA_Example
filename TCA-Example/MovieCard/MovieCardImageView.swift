@@ -7,6 +7,8 @@
 
 import SwiftUI
 
+import SDWebImageSwiftUI
+
 public struct MovieCardImageView: View {
   public let path: String
   public let cornerRadius: CGFloat
@@ -21,21 +23,18 @@ public struct MovieCardImageView: View {
     let imagePath = Constants.posterImageURL.appendingPathComponent(path)
     
     GeometryReader { proxy in
-      AsyncImage(url: imagePath) { image in
-        image
-          .resizable()
-          .aspectRatio(contentMode: contentMode)
-          .imageScale(.large)
-          .frame(width: proxy.size.width, height: proxy.size.height, alignment: .center)
-          .cornerRadius(cornerRadius)
-          
-      } placeholder: {
-        ProgressView()
-          .progressViewStyle(.circular)
-          .tint(.orange)
-          .frame(width: proxy.size.width, height: proxy.size.height, alignment: .center)
-          .background(Color.black.cornerRadius(cornerRadius))
-      }
+      WebImage(url: imagePath)
+        .onSuccess { image, data, cacheType in
+        
+        }
+        .placeholder {
+          MovieImagePlaceholder()
+        }
+        .resizable()
+        .aspectRatio(contentMode: contentMode)
+        .imageScale(.large)
+        .frame(width: proxy.size.width, height: proxy.size.height, alignment: .center)
+        .cornerRadius(cornerRadius)
     }
   }
 }
