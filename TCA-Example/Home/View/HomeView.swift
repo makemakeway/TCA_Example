@@ -7,6 +7,7 @@
 
 import ComposableArchitecture
 import SwiftUI
+import SDWebImageSwiftUI
 
 // MARK: View
 
@@ -62,32 +63,65 @@ public struct HomeView: View {
       }
     }
   }
+
+  
+  private func makeRow(movies: [any MovieDataImp]) -> [[(Result, Int)]] {
+    var items: [[(Result, Int)]] = []
+    var currentRow: [(Result, Int)] = []
+    
+    movies.forEach { results in
+      results.results.enumerated().forEach { result in
+        currentRow.append((result.element, result.offset))
+        if currentRow.count == 5 {
+          items.append(currentRow)
+          currentRow.removeAll()
+        }
+      }
+    }
+    if !currentRow.isEmpty {
+      items.append(currentRow)
+      currentRow.removeAll()
+    }
+  
+    return items
+  }
   
   @ViewBuilder
   private func rowsCardSection(title: String, movies: [any MovieDataImp]) -> some View {
+    let rows = makeRow(movies: movies)
+    
     if !movies.isEmpty {
-      ForEach(movies, id: \.id) { movies in
-        TabView(selection: $currentPopularPage) {
-          ForEach(movies.results, id: \.id) { movie in
-            HStack(spacing: 10) {
-              MovieCardView(movie: movie)
-              HStack(spacing: 10) {
-                Text("1")
-                  .font(.fontMaker(weight: .bold, size: 14))
-                VStack(spacing: 8) {
-                  Text("\(movie.title)")
-                    .font(.fontMaker(weight: .bold, size: 14))
-                  Text("\(movie.voteAverage)")
+      VStack(spacing: 0) {
+        HStack {
+          Text(title)
+            .font(.fontMaker(weight: .bold, size: 20))
+          Spacer()
+        }
+        TabView {
+          ForEach(rows.indices, id: \.self) { firstIndex in
+            VStack {
+              ForEach(rows[firstIndex], id: \.1) { (result, index) in
+                HStack(alignment: .top, spacing: 0) {
+                  MovieCardImageView(path: result.posterPath)
+                    .frame(width: 60, height: 80)
+                    .padding(.horizontal, 10)
+                  Text("\(index + 1)")
+                    .font(.fontMaker(weight: .bold, size: 18))
+                    .padding(.trailing, 8)
+                  Text(result.title)
+                    .font(.fontMaker(weight: .regular, size: 16))
+                  Spacer()
                 }
               }
-              Spacer()
             }
           }
         }
         .tabViewStyle(.page(indexDisplayMode: .never))
       }
+      .frame(height: 500)
+      .padding(.horizontal, 20)
     } else {
-      EmptyView()
+      Text("비어있슴")
     }
   }
   
