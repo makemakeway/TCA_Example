@@ -125,6 +125,7 @@ public struct HomeFeature: ReducerProtocol {
         current.append(movie)
       }
       state.upcomingMovies = current
+      print("DEBUG: \(state.upcomingMovies.count)")
       return .none
     case .upcomingMoviesResponse(.failure):
       return .none

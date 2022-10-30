@@ -100,7 +100,7 @@ public struct HomeView: View {
         TabView {
           ForEach(rows.indices, id: \.self) { firstIndex in
             VStack {
-              ForEach(rows[firstIndex], id: \.1) { (result, index) in
+              List(rows[firstIndex], id: \.1) { (result, index) in
                 HStack(alignment: .top, spacing: 0) {
                   MovieCardImageView(path: result.posterPath)
                     .frame(width: 60, height: 80)
@@ -147,18 +147,16 @@ public struct HomeView: View {
     WithViewStore(self.store) { viewStore in
       ScrollView {
         Section {
-          TabView(selection: $currentIndex) {
-            if viewStore.upcomingMovies.isEmpty {
-              Color(uiColor: .darkGray)
-            } else {
+          if !viewStore.upcomingMovies.isEmpty {
+            TabView(selection: $currentIndex) {
               ForEach(viewStore.upcomingMovies, id: \.id) { movies in
                 ForEach(movies.results, id: \.id) { movie in
                   MovieCardImageView(path: movie.posterPath, contentMode: .fill)
                 }
               }
             }
+            .tabViewStyle(.page)
           }
-          .tabViewStyle(.page)
         }
         .frame(height: Constants.height * 0.3)
         
