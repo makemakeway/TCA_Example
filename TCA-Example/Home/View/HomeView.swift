@@ -90,17 +90,18 @@ public struct HomeView: View {
   private func rowsCardSection(title: String, movies: [any MovieDataImp]) -> some View {
     let rows = makeRow(movies: movies)
     
-    if !movies.isEmpty {
-      VStack(spacing: 0) {
-        HStack {
-          Text(title)
-            .font(.fontMaker(weight: .bold, size: 20))
-          Spacer()
-        }
+    VStack(spacing: 0) {
+      HStack {
+        Text(title)
+          .font(.fontMaker(weight: .bold, size: 20))
+        Spacer()
+      }
+      .padding(.horizontal, 20)
+      if !movies.isEmpty {
         TabView {
           ForEach(rows.indices, id: \.self) { firstIndex in
             VStack {
-              List(rows[firstIndex], id: \.1) { (result, index) in
+              ForEach(rows[firstIndex], id: \.1) { (result, index) in
                 HStack(alignment: .top, spacing: 0) {
                   MovieCardImageView(path: result.posterPath)
                     .frame(width: 60, height: 80)
@@ -116,36 +117,21 @@ public struct HomeView: View {
             }
           }
         }
+        .frame(height: 500)
+        .padding(.horizontal, 20)
         .tabViewStyle(.page(indexDisplayMode: .never))
       }
-      .frame(height: 500)
-      .padding(.horizontal, 20)
-    } else {
-      Text("비어있슴")
-    }
-  }
-  
-  private func makeColumns(movies: [any MovieDataImp]) -> [[any MovieDataImp]] {
-    var allColumns: [[any MovieDataImp]] = []
-    var currentColumn: [any MovieDataImp] = []
-    movies.forEach { movie in
-      if currentColumn.count < 5 {
-        currentColumn.append(movie)
-      } else {
-        allColumns.append(currentColumn)
-        currentColumn.removeAll()
+      else {
+        //TODO: PlaceHolder
+        Text("비어있슴")
       }
     }
-    if !currentColumn.isEmpty {
-      allColumns.append(currentColumn)
-      currentColumn.removeAll()
-    }
-    return allColumns
   }
   
   public var body: some View {
     WithViewStore(self.store) { viewStore in
       ScrollView {
+        //MARK: upcoming movies
         Section {
           if !viewStore.upcomingMovies.isEmpty {
             TabView(selection: $currentIndex) {
@@ -158,25 +144,23 @@ public struct HomeView: View {
             .tabViewStyle(.page)
           }
         }
-        .frame(height: Constants.height * 0.3)
+        .frame(height: Constants.height * 0.7)
         
         horizontalCardSection(
-          title: "현재 상영중",
+          title: "현재 상영중인 영화 👀",
           movies: viewStore.nowMovies,
           fetchAction: .fetchNewMovies(currentPage: viewStore.nowMoviePage)
         )
-        .padding(.vertical, 10)
+        .padding(.vertical, 20)
         
         horizontalCardSection(
-          title: "평점 좋은 영화",
-          movies: viewStore.topRatedMovies,
-          fetchAction: .fetchTopRatedMovies(currentPage: viewStore.topRatedPage)
+          title: "띵작 영화 모음 💪",
+          movies: viewStore.popularMovies,
+          fetchAction: .fetchTopRatedMovies(currentPage: viewStore.popularMoviesPage)
         )
-        .padding(.vertical, 10)
+        .padding(.vertical, 20)
         
-        rowsCardSection(title: "요즘 뜨는 영화", movies: viewStore.popularMovies)
-        
-        rowsCardSection(title: "요즘 뜨는 영화", movies: viewStore.topRatedMovies)
+        rowsCardSection(title: "평점 TOP 100 📈", movies: viewStore.topRatedMovies)
       }
       .navigationBarTitleDisplayMode(.inline)
       .toolbar {
