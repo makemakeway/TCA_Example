@@ -9,9 +9,14 @@ import SwiftUI
 
 @main
 struct TCA_ExampleApp: App {
-    var body: some Scene {
-        WindowGroup {
-            ContentView()
-        }
+  var body: some Scene {
+    WindowGroup {
+      MovieDBTabView(
+        store: .init(
+          initialState: .init(),
+          reducer: MovieDBTabFeature()
+        )
+      )
     }
+  }
 }

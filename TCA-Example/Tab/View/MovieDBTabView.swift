@@ -7,13 +7,23 @@
 
 import SwiftUI
 
-struct ContentView: View {
+import ComposableArchitecture
+
+public struct MovieDBTabView: View {
   @State var hiddened: Bool = false
   @State var currentPage: Int = 0
-  var body: some View {
+  let store: MovieDBTabStore
+  @ObservedObject private var viewStore: MovieDBTabViewStore
+  
+  init(store: MovieDBTabStore) {
+    self.store = store
+    self.viewStore = ViewStore(store)
+  }
+  
+  public var body: some View {
     Group {
       TabView(selection: $currentPage) {
-        NavigationView {
+        NavigationStack(path: viewStore.binding(get: \.coordinator.stack, send: .none)) {
           HomeView(
             store: .init(
               initialState: .init(),
@@ -21,18 +31,16 @@ struct ContentView: View {
             )
           )
         }
-        .navigationViewStyle(.stack)
         .tabItem {
           Label("홈", systemImage: "house")
         }
         
-        NavigationView {
+        NavigationStack(path: viewStore.binding(get: \.coordinator.stack, send: .none)) {
           SearchView(store: .init(
             initialState: .init(),
             reducer: SearchFeature())
           )
         }
-        .navigationViewStyle(.stack)
         .tabItem {
           Label("검색", systemImage: "magnifyingglass")
         }

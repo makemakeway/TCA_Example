@@ -14,3 +14,9 @@ public protocol MovieDataImp: Identifiable, Codable {
   var totalResults: Int { get set }
   var id: String { get set }
 }
+
+//public extension MovieDataImp {
+//  public func hash(into hasher: inout Hasher) {
+//    hasher.combine()
+//  }
+//}

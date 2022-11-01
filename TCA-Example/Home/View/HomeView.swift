@@ -12,7 +12,6 @@ import SDWebImageSwiftUI
 // MARK: View
 
 public struct HomeView: View {
-  
   @ObservedObject
   private var viewStore: ViewStoreOf<HomeFeature>
   private let store: StoreOf<HomeFeature>
@@ -48,7 +47,9 @@ public struct HomeView: View {
           LazyHStack(spacing: 10) {
             ForEach(movies, id: \.id) { movies in
               ForEach(movies.results, id: \.id) { movie in
-                MovieCardView(movie: movie)
+//                NavigationLink(value: Result.self) {
+                  MovieCardView(movie: movie)
+//                }
               }
             }
             if !viewStore.nowMovieLastPageLoaded && !movies.isEmpty {

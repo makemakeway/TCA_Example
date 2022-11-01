@@ -23,7 +23,6 @@ public struct MovieCardImageView: View {
     let imagePath = Constants.posterImageURL.appendingPathComponent(path)
     
     GeometryReader { proxy in
-      
       WebImage(url: imagePath)
         .onSuccess { image, data, cacheType in
           
