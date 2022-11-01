@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		100A05EE291095AC00572CBB /* CoordinatorFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100A05ED291095AC00572CBB /* CoordinatorFeature.swift */; };
+		100A05EE291095AC00572CBB /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100A05ED291095AC00572CBB /* Coordinator.swift */; };
 		100A05F02910966F00572CBB /* MovieDBTabFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100A05EF2910966F00572CBB /* MovieDBTabFeature.swift */; };
 		10303A0828D8578A009BC9E1 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10303A0328D8578A009BC9E1 /* HomeView.swift */; };
 		103C61F328FA86EF00A8A82B /* HomeFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = 103C61F228FA86EF00A8A82B /* HomeFeature.swift */; };
@@ -61,7 +61,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		100A05ED291095AC00572CBB /* CoordinatorFeature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoordinatorFeature.swift; sourceTree = "<group>"; };
+		100A05ED291095AC00572CBB /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		100A05EF2910966F00572CBB /* MovieDBTabFeature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDBTabFeature.swift; sourceTree = "<group>"; };
 		10303A0328D8578A009BC9E1 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		103C61F228FA86EF00A8A82B /* HomeFeature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeFeature.swift; sourceTree = "<group>"; };
@@ -130,7 +130,7 @@
 		100A05EC2910959D00572CBB /* Coordinator */ = {
 			isa = PBXGroup;
 			children = (
-				100A05ED291095AC00572CBB /* CoordinatorFeature.swift */,
+				100A05ED291095AC00572CBB /* Coordinator.swift */,
 			);
 			path = Coordinator;
 			sourceTree = "<group>";
@@ -538,7 +538,7 @@
 				1052833E28C0DA81001CA6A4 /* MovieDBTabView.swift in Sources */,
 				106543B228F50103008964FF /* URL+Extension.swift in Sources */,
 				100A05F02910966F00572CBB /* MovieDBTabFeature.swift in Sources */,
-				100A05EE291095AC00572CBB /* CoordinatorFeature.swift in Sources */,
+				100A05EE291095AC00572CBB /* Coordinator.swift in Sources */,
 				1065439B28EC9B7C008964FF /* MovieCardView.swift in Sources */,
 				10F97F332904B85D00F86E06 /* MovieImagePlaceholder.swift in Sources */,
 				103C61FE28FC3FD600A8A82B /* TopRatedMoviesModel.swift in Sources */,

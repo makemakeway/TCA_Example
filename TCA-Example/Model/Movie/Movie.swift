@@ -10,7 +10,7 @@ import Foundation
 public struct CommonMoviesModel: Codable, Equatable, MovieDataImp {
   public var dates: MoviesDates?
   public var page: Int
-  public var results: [Result]
+  public var results: [MovieResult]
   public var totalPages, totalResults: Int
   public var id = UUID().uuidString
   

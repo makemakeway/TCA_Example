@@ -23,7 +23,7 @@ public struct MovieDBTabView: View {
   public var body: some View {
     Group {
       TabView(selection: $currentPage) {
-        NavigationStack(path: viewStore.binding(get: \.coordinator.stack, send: .none)) {
+        NavigationStack(path: viewStore.binding(get: { $0.stack ?? .init() }, send: .none)) {
           HomeView(
             store: .init(
               initialState: .init(),
@@ -35,7 +35,7 @@ public struct MovieDBTabView: View {
           Label("홈", systemImage: "house")
         }
         
-        NavigationStack(path: viewStore.binding(get: \.coordinator.stack, send: .none)) {
+        NavigationStack(path: viewStore.binding(get: { $0.stack ?? .init() }, send: .none)) {
           SearchView(store: .init(
             initialState: .init(),
             reducer: SearchFeature())
@@ -44,6 +44,9 @@ public struct MovieDBTabView: View {
         .tabItem {
           Label("검색", systemImage: "magnifyingglass")
         }
+      }
+      .onAppear {
+        viewStore.send(.onAppear)
       }
     }
   }

@@ -8,7 +8,7 @@ import Foundation
 // MARK: - TopRatedMoviesModel
 public struct TopRatedMoviesModel: Codable, Equatable, MovieDataImp {
   public var page: Int
-  public var results: [Result]
+  public var results: [MovieResult]
   public var totalResults, totalPages: Int
   public var id = UUID().uuidString
   
@@ -18,7 +18,7 @@ public struct TopRatedMoviesModel: Codable, Equatable, MovieDataImp {
     case totalPages = "total_pages"
   }
   
-  public init(page: Int, results: [Result], totalResults: Int, totalPages: Int) {
+  public init(page: Int, results: [MovieResult], totalResults: Int, totalPages: Int) {
     self.page = page
     self.results = results
     self.totalResults = totalResults

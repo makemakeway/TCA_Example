@@ -8,7 +8,7 @@
 import Foundation
 
 public protocol MovieDataImp: Identifiable, Codable {
-  var results: [Result] { get set }
+  var results: [MovieResult] { get set }
   var page: Int { get set }
   var totalPages: Int { get set }
   var totalResults: Int { get set }

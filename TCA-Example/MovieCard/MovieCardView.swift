@@ -11,10 +11,10 @@ import SwiftUI
 // MARK: View
 
 public struct MovieCardView: View {
-  private var movie: Result
+  private var movie: MovieResult
   private let cardCornerRadius: CGFloat = 8
   
-  public init(movie: Result) {
+  public init(movie: MovieResult) {
     self.movie = movie
   }
   
@@ -29,6 +29,7 @@ public struct MovieCardView: View {
       Text(movie.title)
         .font(.fontMaker(weight: .bold, size: 14))
         .padding([.bottom, .horizontal], 10)
+        .foregroundColor(.primary)
     }
     .frame(maxWidth: 150)
   }

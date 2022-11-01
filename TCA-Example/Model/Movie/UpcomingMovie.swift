@@ -8,7 +8,7 @@ import Foundation
 // MARK: - UpcommingMovie
 public struct UpcomingMovie: Codable, Equatable, MovieDataImp {
   public var page: Int
-  public var results: [Result]
+  public var results: [MovieResult]
   public var dates: Dates
   public var totalPages, totalResults: Int
   public var id = UUID().uuidString
@@ -19,7 +19,7 @@ public struct UpcomingMovie: Codable, Equatable, MovieDataImp {
     case totalResults = "total_results"
   }
   
-  public init(page: Int, results: [Result], dates: Dates, totalPages: Int, totalResults: Int) {
+  public init(page: Int, results: [MovieResult], dates: Dates, totalPages: Int, totalResults: Int) {
     self.page = page
     self.results = results
     self.dates = dates
@@ -39,7 +39,7 @@ public struct Dates: Codable, Equatable {
 }
 
 // MARK: - Result
-public struct Result: Codable, Equatable, Hashable {
+public struct MovieResult: Codable, Equatable, Hashable {
   public let posterPath: String
   public let adult: Bool
   public let overview, releaseDate: String

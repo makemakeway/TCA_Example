@@ -47,9 +47,15 @@ public struct HomeView: View {
           LazyHStack(spacing: 10) {
             ForEach(movies, id: \.id) { movies in
               ForEach(movies.results, id: \.id) { movie in
-//                NavigationLink(value: Result.self) {
+                NavigationLink {
+                  Text("\(movie.originalTitle)")
+                    .font(.fontMaker(weight: .bold, size: 24))
+                    .onTapGesture {
+                      
+                    }
+                } label: {
                   MovieCardView(movie: movie)
-//                }
+                }
               }
             }
             if !viewStore.nowMovieLastPageLoaded && !movies.isEmpty {
@@ -66,9 +72,9 @@ public struct HomeView: View {
   }
 
   
-  private func makeRow(movies: [any MovieDataImp]) -> [[(Result, Int)]] {
-    var items: [[(Result, Int)]] = []
-    var currentRow: [(Result, Int)] = []
+  private func makeRow(movies: [any MovieDataImp]) -> [[(MovieResult, Int)]] {
+    var items: [[(MovieResult, Int)]] = []
+    var currentRow: [(MovieResult, Int)] = []
     
     movies.forEach { results in
       results.results.enumerated().forEach { result in
