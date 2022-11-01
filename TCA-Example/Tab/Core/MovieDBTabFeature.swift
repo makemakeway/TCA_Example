@@ -20,7 +20,7 @@ public struct MovieDBTabFeature: ReducerProtocol {
     var home: HomeFeature.State = .init()
     var search: SearchFeature.State = .init()
     var route: Route? = nil
-    var stack: NavigationPath? = nil
+    var stack: NavigationPath = .init()
   }
   
   public enum Action: Equatable {
@@ -46,7 +46,7 @@ public struct MovieDBTabFeature: ReducerProtocol {
     case .none:
       return .none
     case .onAppear:
-      state.stack = coordinator.currentStack()
+      coordinator.setStack(state.stack)
       return .none
     case .moveToHome:
       state.route = .home

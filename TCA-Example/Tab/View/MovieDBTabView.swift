@@ -23,11 +23,11 @@ public struct MovieDBTabView: View {
   public var body: some View {
     Group {
       TabView(selection: $currentPage) {
-        NavigationStack(path: viewStore.binding(get: { $0.stack ?? .init() }, send: .none)) {
+        NavigationStack(path: viewStore.binding(get: \.stack, send: .none)) {
           HomeView(
-            store: .init(
-              initialState: .init(),
-              reducer: HomeFeature()._printChanges(.actionLabels)
+            store: self.store.scope(
+              state: \.home,
+              action: MovieDBTabFeature.Action.moveToHome
             )
           )
         }
@@ -35,10 +35,12 @@ public struct MovieDBTabView: View {
           Label("홈", systemImage: "house")
         }
         
-        NavigationStack(path: viewStore.binding(get: { $0.stack ?? .init() }, send: .none)) {
-          SearchView(store: .init(
-            initialState: .init(),
-            reducer: SearchFeature())
+        NavigationStack(path: viewStore.binding(get: \.stack, send: .none)) {
+          SearchView(
+            store: self.store.scope(
+              state: \.search,
+              action: MovieDBTabFeature.Action.moveToSearch
+            )
           )
         }
         .tabItem {

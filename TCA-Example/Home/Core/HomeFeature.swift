@@ -11,6 +11,7 @@ import ComposableArchitecture
 
 public struct HomeFeature: ReducerProtocol {
   let movieService = MovieService.live
+  @Dependency(\.coordinator) var coordinator
   
   public init() {}
   public struct State: Equatable {
@@ -47,6 +48,7 @@ public struct HomeFeature: ReducerProtocol {
     case popularMoviesResponse(TaskResult<CommonMoviesModel>)
     case homeInit
     case endInit
+    case pop
   }
   
   
@@ -57,6 +59,9 @@ public struct HomeFeature: ReducerProtocol {
   
   public func core(into state: inout State, action: Action) -> Effect<Action, Never> {
     switch action {
+    case .pop:
+      coordinator.popLast()
+      return .none
     case .homeInit:
       if state.initailized {
         return .none

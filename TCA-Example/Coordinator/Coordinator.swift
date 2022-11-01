@@ -13,12 +13,22 @@ public struct Coordinator {
   public var popToRoot: () -> ()
   public var popLast: () -> ()
   public var currentStack: () -> (NavigationPath)
+  public var setStack: (NavigationPath) -> ()
   private static var stack: NavigationPath = .init()
   
   static let live = Self(
     popToRoot: { Self.stack = .init() },
-    popLast: { Self.stack.removeLast() },
-    currentStack: { Self.stack }
+    popLast: {
+      if !Self.stack.isEmpty {
+        Self.stack.removeLast()
+      } else {
+        print("DEBUG: stack is Empty")
+      }
+    },
+    currentStack: { Self.stack },
+    setStack: { stack in
+      Self.stack = stack
+    }
   )
 }
 

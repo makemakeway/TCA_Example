@@ -51,7 +51,7 @@ public struct HomeView: View {
                   Text("\(movie.originalTitle)")
                     .font(.fontMaker(weight: .bold, size: 24))
                     .onTapGesture {
-                      
+                      viewStore.send(.pop)
                     }
                 } label: {
                   MovieCardView(movie: movie)
